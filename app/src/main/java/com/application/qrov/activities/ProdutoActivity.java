@@ -2,6 +2,7 @@ package com.application.qrov.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,7 @@ public class ProdutoActivity extends AppCompatActivity {
     private Produto produto;
     TextView nomeProduto, idProduto, infoProduto;
     ImageView imgProduto, qrProduto, printQR;
-    Button entradaEstoque, saidaEstoque;
+    Button estoque;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +36,13 @@ public class ProdutoActivity extends AppCompatActivity {
         imgProduto = findViewById(R.id.imgProduto);
         qrProduto = findViewById(R.id.qrProduto);
         printQR = findViewById(R.id.printQR);
-        entradaEstoque = findViewById(R.id.entradaEstoque);
-        saidaEstoque = findViewById(R.id.saidaEstoque);
+        estoque = findViewById(R.id.estoque);
 
-        String QRCode = getIntent().getStringExtra("QR-Code");
+        final String QRCode = getIntent().getStringExtra("QR-Code");
 
         boolean encontrado = false;
         for (Produto produto1 : Produto.produtos) {
-            if (produto1.toString().equals(QRCode)) {
+            if (produto1.QRCode().equals(QRCode)) {
                 produto = produto1;
                 encontrado = true;
                 break;
@@ -52,11 +52,11 @@ public class ProdutoActivity extends AppCompatActivity {
         if (encontrado) {
             nomeProduto.setText(produto.getNome());
             idProduto.setText(produto.getId());
-            infoProduto.setText(produto.informacoes());
+            infoProduto.setText(produto.toString());
 
             MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
             try {
-                BitMatrix bitMatrix = multiFormatWriter.encode(produto.toString(), BarcodeFormat.QR_CODE, 300, 300);
+                BitMatrix bitMatrix = multiFormatWriter.encode(produto.QRCode(), BarcodeFormat.QR_CODE, 300, 300);
                 BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                 Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                 qrProduto.setImageBitmap(bitmap);
@@ -64,22 +64,18 @@ public class ProdutoActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            entradaEstoque.setEnabled(true);
-            saidaEstoque.setEnabled(true);
+            estoque.setEnabled(true);
+        } else {
+            finish();
         }
 
 
-        entradaEstoque.setOnClickListener(new View.OnClickListener() {
+        estoque.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-            }
-        });
-
-        saidaEstoque.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+                Intent intent = new Intent(ProdutoActivity.this, EstoqueActivity.class);
+                intent.putExtra("QR-Code", QRCode);
+                startActivity(intent);
             }
         });
     }

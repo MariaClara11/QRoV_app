@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.application.qrov.activities.Captura;
 import com.application.qrov.R;
+import com.application.qrov.activities.ListaProdutosActivity;
 import com.application.qrov.activities.ProdutoActivity;
 import com.application.qrov.classes.Produto;
 import com.google.android.material.snackbar.Snackbar;
@@ -79,6 +80,13 @@ public class BuscaFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        todos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ListaProdutosActivity.class));
+            }
+        });
     }
 
     @Override
@@ -88,11 +96,10 @@ public class BuscaFragment extends Fragment {
             if (result.getContents() == null) {
                 Snackbar.make(Objects.requireNonNull(getView()), "Leitura cancelada", Snackbar.LENGTH_LONG).show();
                 card.setVisibility(View.INVISIBLE);
-                resultado.setText("");
                 verProduto.setEnabled(false);
             } else {
                 for (Produto produto : Produto.produtos) {
-                    if (produto.toString().equals(result.getContents())) {
+                    if (produto.QRCode().equals(result.getContents())) {
                         card.setVisibility(View.VISIBLE);
                         resultado.setText(result.getContents());
                         verProduto.setEnabled(true);

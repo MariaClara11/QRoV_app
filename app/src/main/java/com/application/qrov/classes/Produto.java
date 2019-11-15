@@ -9,7 +9,7 @@ public class Produto {
     private int id;
     private String nome;
     private String fornecedor; //cnpj
-    private int unidadeSaida;
+    private String unidadeSaida;
     private double minimo;
     private double quantidade;
     private String localizacao;
@@ -19,7 +19,7 @@ public class Produto {
         produtos.add(this);
     }
 
-    public Produto(int id, String nome, String fornecedor, int unidadeSaida, double minimo, double quantidade, String localizacao, String descricao) {
+    public Produto(int id, String nome, String fornecedor, String unidadeSaida, double minimo, double quantidade, String localizacao, String descricao) {
         this.id = id;
         this.nome = nome;
         this.fornecedor = fornecedor;
@@ -56,11 +56,11 @@ public class Produto {
         this.fornecedor = fornecedor;
     }
 
-    public int getUnidadeSaida() {
+    public String getUnidadeSaida() {
         return unidadeSaida;
     }
 
-    public void setUnidadeSaida(int unidadeSaida) {
+    public void setUnidadeSaida(String unidadeSaida) {
         this.unidadeSaida = unidadeSaida;
     }
 
@@ -96,7 +96,8 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public String informacoes() {
+    @Override
+    public String toString() {
         return "\nFornecedor (CNPJ): " + getFornecedor() +
                 "\nUnidade de saída: " + getUnidadeSaida() +
                 "\nEstoque mínimo: " + getMinimo() +
@@ -105,16 +106,13 @@ public class Produto {
                 "\nDescrição: " + getDescricao();
     }
 
-    @Override
-    public String toString() { //QR-Code
-        return "Produto" +
-                "\nID: " + getId() +
+    public String QRCode () {
+        return "\nID: " + getId() +
                 "\nNome: " + getNome() +
                 "\nFornecedor (CNPJ): " + getFornecedor() +
                 "\nUnidade de saída: " + getUnidadeSaida() +
-                "\nEstoque mínimo: " + getMinimo() +
-                "\nQuantidade: " + getQuantidade() +
                 "\nLoalização: " + getLocalizacao() +
                 "\nDescrição: " + getDescricao();
     }
+
 }

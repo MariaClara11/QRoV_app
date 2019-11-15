@@ -30,7 +30,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListaProdutosActivity.this, Produto.class);
-                intent.putExtra("QR-Code", Produto.produtos.get(position).toString());
+                intent.putExtra("QR-Code", Produto.produtos.get(position).QRCode());
                 startActivity(intent);
             }
         });
