@@ -19,7 +19,9 @@
         <activity
             android:name=".activities.ListaProdutosActivity"
             android:parentActivityName=".activities.ProdutoActivity" />
-        <activity android:name=".activities.ProdutoActivity" />
+        <activity
+            android:name=".activities.ProdutoActivity"
+            android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity
             android:name=".activities.Captura"

@@ -22,6 +22,8 @@ import com.application.qrov.classes.Localizacao;
 import com.application.qrov.classes.Produto;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -46,6 +48,10 @@ public class CadastroFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        for (int i = 0; i < campos.length; i++) {
+            campos[i] = new EditText(getContext());
+        }
+
         campos[0] = view.findViewById(R.id.inputNome);
         campos[1] = view.findViewById(R.id.inputFornecedor);
         campos[2] = view.findViewById(R.id.inputMinimo);
@@ -56,19 +62,10 @@ public class CadastroFragment extends Fragment {
         campos[7] = view.findViewById(R.id.inputDescricao);
         confirma = view.findViewById(R.id.confirma);
 
-        boolean valido = true;
-        for (EditText campo : campos) {
-            if (TextUtils.isEmpty(campo.getText())) {
-                valido = false;
-                break;
-            }
-        }
-
-        final boolean finalValido = valido;
         confirma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (finalValido) {
+                if (camposValidos()) {
                     Produto produto = new Produto();
 
                     String nome = campos[0].getText().toString();
@@ -93,12 +90,21 @@ public class CadastroFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), ProdutoActivity.class);
                     intent.putExtra("QR-Code", produto.QRCode());
                     startActivity(intent);
-                    getActivity().finish();
+                    Objects.requireNonNull(getActivity()).finish();
                 } else {
                     Snackbar.make(new View(getActivity()), "Alguns dados estão invalidados", Snackbar.LENGTH_LONG).show();
                 }
             }
         });
 
+    }
+
+    public boolean camposValidos() {
+        for (EditText campo : campos) {
+            if (TextUtils.isEmpty(campo.getText())) {
+                return false;
+            }
+        }
+        return true;
     }
 }
