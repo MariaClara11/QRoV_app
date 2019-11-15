@@ -45,7 +45,7 @@ public class EstoqueActivity extends AppCompatActivity {
         String QRCode = getIntent().getStringExtra("QR-Code");
 
         textProduto = findViewById(R.id.produto);
-        textProduto.setText(QRCode);
+
 
         boolean encontrado = false;
         int cont = 0;
@@ -53,6 +53,8 @@ public class EstoqueActivity extends AppCompatActivity {
             if (produto1.QRCode().equals(QRCode)) {
                 produto = cont;
                 encontrado = true;
+                String texto = "Nome: " + Produto.produtos.get(produto).getNome() + "\nID: " + Produto.produtos.get(produto).getId() + Produto.produtos.get(produto).toString();
+                textProduto.setText(texto);
                 break;
             }
             cont++;
@@ -74,6 +76,7 @@ public class EstoqueActivity extends AppCompatActivity {
                                 Produto editavel = Produto.produtos.get(produto);
                                 editavel.setQuantidade(editavel.getQuantidade() + Integer.parseInt(qtd.getText().toString()));
                                 Produto.produtos.set(produto, editavel);
+                                finish();
                             }
                         });
                         break;
@@ -87,6 +90,7 @@ public class EstoqueActivity extends AppCompatActivity {
                                 if (editavel.getQuantidade() >= Integer.parseInt(qtd.getText().toString())) {
                                     editavel.setQuantidade(editavel.getQuantidade() - Integer.parseInt(qtd.getText().toString()));
                                     Produto.produtos.set(produto, editavel);
+                                    finish();
                                 } else {
                                     Snackbar.make(new View(EstoqueActivity.this), "A quantidade não pode ser atualizada", Snackbar.LENGTH_LONG).show();
                                 }

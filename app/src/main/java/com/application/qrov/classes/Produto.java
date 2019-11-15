@@ -16,7 +16,6 @@ public class Produto {
     private String descricao;
 
     public Produto() {
-        produtos.add(this);
     }
 
     public Produto(int id, String nome, String fornecedor, String unidadeSaida, double minimo, double quantidade, String localizacao, String descricao) {
@@ -28,8 +27,6 @@ public class Produto {
         this.quantidade = quantidade;
         this.localizacao = localizacao;
         this.descricao = descricao;
-
-        produtos.add(this);
     }
 
     public int getId() {
@@ -106,7 +103,7 @@ public class Produto {
                 "\nDescrição: " + getDescricao();
     }
 
-    public String QRCode () {
+    public String QRCode() {
         return "\nID: " + getId() +
                 "\nNome: " + getNome() +
                 "\nFornecedor (CNPJ): " + getFornecedor() +

@@ -27,6 +27,8 @@ import com.google.zxing.integration.android.IntentResult;
 
 import java.util.Objects;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -92,7 +94,7 @@ public class BuscaFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
+        if (result != null && resultCode == RESULT_OK) {
             if (result.getContents() == null) {
                 Snackbar.make(Objects.requireNonNull(getView()), "Leitura cancelada", Snackbar.LENGTH_LONG).show();
                 card.setVisibility(View.INVISIBLE);

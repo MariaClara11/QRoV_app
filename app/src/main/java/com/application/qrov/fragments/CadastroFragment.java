@@ -1,21 +1,32 @@
 package com.application.qrov.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.application.qrov.R;
+import com.application.qrov.classes.Localizacao;
+import com.application.qrov.classes.Produto;
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CadastroFragment extends Fragment {
 
+    EditText[] campos = new EditText[8];
+    Button confirma;
 
     public CadastroFragment() {
         // Required empty public constructor
@@ -29,4 +40,63 @@ public class CadastroFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_cadastro, container, false);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        campos[0] = view.findViewById(R.id.inputNome);
+        campos[1] = view.findViewById(R.id.inputFornecedor);
+        campos[2] = view.findViewById(R.id.inputMinimo);
+        campos[3] = view.findViewById(R.id.andar);
+        campos[4] = view.findViewById(R.id.corredor);
+        campos[5] = view.findViewById(R.id.prateleira);
+        campos[6] = view.findViewById(R.id.nivel);
+        campos[7] = view.findViewById(R.id.inputDescricao);
+        confirma = view.findViewById(R.id.confirma);
+
+        boolean valido = true;
+        for (EditText campo : campos) {
+            if (TextUtils.isEmpty(campo.getText())) {
+                valido = false;
+                break;
+            }
+        }
+
+        final boolean finalValido = valido;
+        confirma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (finalValido) {
+                    Produto produto = new Produto();
+
+                    String nome = campos[0].getText().toString();
+                    String fornecedor = campos[1].getText().toString();
+                    double minimo = Double.parseDouble(campos[2].getText().toString());
+                    int a = Integer.parseInt(campos[3].getText().toString());
+                    int c = Integer.parseInt(campos[4].getText().toString());
+                    int p = Integer.parseInt(campos[5].getText().toString());
+                    int n = Integer.parseInt(campos[6].getText().toString());
+                    String localizacao = new Localizacao(a, c, p, n).toString();
+                    String descricao = campos[7].getText().toString();
+
+                    produto.setId(Produto.produtos.size());
+                    produto.setNome(nome);
+                    produto.setFornecedor(fornecedor);
+                    produto.setMinimo(minimo);
+                    produto.setLocalizacao(localizacao);
+                    produto.setDescricao(descricao);
+
+                    Produto.produtos.add(produto);
+
+                    Intent intent = new Intent(getActivity(), Produto.class);
+                    intent.putExtra("QR-Code", produto.QRCode());
+                    startActivity(intent);
+                    getActivity().finish();
+                } else {
+                    Snackbar.make(new View(getActivity()), "Alguns dados estão invalidados", Snackbar.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
 }
