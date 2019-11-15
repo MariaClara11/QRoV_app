@@ -22,10 +22,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new BuscaFragment()).commit();
-        }
+        bottomNavigationView.setSelectedItemId(R.id.itemBusca);
     }
 
     @Override
@@ -33,15 +30,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         switch (menuItem.getItemId()) {
             case R.id.itemBusca:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new BuscaFragment()).commit();
-                break;
+                return true;
 
             case R.id.itemCadastro:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new CadastroFragment()).commit();
-                break;
+                return true;
 
             case R.id.itemMais:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new MaisFragment()).commit();
-                break;
+                return true;
         }
 
         return false;

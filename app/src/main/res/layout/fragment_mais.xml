@@ -34,7 +34,8 @@
         <ListView
             android:id="@+id/listaOpcoes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:divider="@null" />
     </androidx.cardview.widget.CardView>
 
     <TextView
