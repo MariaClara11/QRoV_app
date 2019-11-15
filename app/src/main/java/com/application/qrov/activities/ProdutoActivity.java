@@ -51,7 +51,7 @@ public class ProdutoActivity extends AppCompatActivity {
 
         if (encontrado) {
             nomeProduto.setText(produto.getNome());
-            idProduto.setText(produto.getId());
+            idProduto.setText(Integer.toString(produto.getId()));
             infoProduto.setText(produto.toString());
 
             MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
