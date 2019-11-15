@@ -45,7 +45,7 @@ public class ListaProdutosAdapter extends BaseAdapter {
         TextView local = view.findViewById(R.id.itemLocalProduto);
 
         nome.setText(produto.getNome());
-        id.setText(produto.getId());
+        id.setText(Integer.toString(produto.getId()));
         local.setText(produto.getLocalizacao());
 
         return view;

@@ -92,7 +92,7 @@ public class CadastroFragment extends Fragment {
                     startActivity(intent);
                     Objects.requireNonNull(getActivity()).finish();
                 } else {
-                    Snackbar.make(new View(getContext()), "Alguns dados estão invalidados", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(getActivity().findViewById(android.R.id.content), "Alguns campos estão invalidados", Snackbar.LENGTH_LONG).show();
                 }
             }
         });
