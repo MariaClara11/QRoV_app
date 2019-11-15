@@ -1,6 +1,7 @@
 package com.application.qrov.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.application.qrov.R;
+import com.application.qrov.activities.AjudaActivity;
+import com.application.qrov.activities.TermosActivity;
 import com.application.qrov.classes.ListaOpcoesAdapter;
 import com.application.qrov.classes.Opcao;
 
@@ -64,6 +67,7 @@ public class MaisFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
+                        startActivity(new Intent(getActivity(), AjudaActivity.class));
                         break;
 
                     case 1:
@@ -75,6 +79,7 @@ public class MaisFragment extends Fragment {
                         break;
 
                     case 2:
+                        startActivity(new Intent(getActivity(), TermosActivity.class));
                         break;
 
                     case 3:
