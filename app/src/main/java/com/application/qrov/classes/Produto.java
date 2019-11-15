@@ -14,7 +14,6 @@ public class Produto {
     private double quantidade;
     private String localizacao;
     private String descricao;
-    private String QRCode;
 
     public Produto() {
         produtos.add(this);
@@ -29,7 +28,6 @@ public class Produto {
         this.quantidade = quantidade;
         this.localizacao = localizacao;
         this.descricao = descricao;
-        this.QRCode = toString();
 
         produtos.add(this);
     }
@@ -98,24 +96,25 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public String getQRCode() {
-        return QRCode;
-    }
-
-    public void setQRCode() {
-        this.QRCode = toString();
+    public String informacoes() {
+        return "\nFornecedor (CNPJ): " + getFornecedor() +
+                "\nUnidade de saída: " + getUnidadeSaida() +
+                "\nEstoque mínimo: " + getMinimo() +
+                "\nQuantidade: " + getQuantidade() +
+                "\nLoalização: " + getLocalizacao() +
+                "\nDescrição: " + getDescricao();
     }
 
     @Override
-    public String toString() {
+    public String toString() { //QR-Code
         return "Produto" +
-                "\nID: " + id +
-                "\nNome: " + nome +
-                "\nFornecedor (CNPJ): " + fornecedor +
-                "\nUnidade de saída: " + unidadeSaida +
-                "\nEstoque mínimo: " + minimo +
-                "\nQuantidade: " + quantidade +
-                "\nLoalização: " + localizacao +
-                "\nDescrição: " + descricao;
+                "\nID: " + getId() +
+                "\nNome: " + getNome() +
+                "\nFornecedor (CNPJ): " + getFornecedor() +
+                "\nUnidade de saída: " + getUnidadeSaida() +
+                "\nEstoque mínimo: " + getMinimo() +
+                "\nQuantidade: " + getQuantidade() +
+                "\nLoalização: " + getLocalizacao() +
+                "\nDescrição: " + getDescricao();
     }
 }

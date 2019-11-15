@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.application.qrov.activities.Captura;
 import com.application.qrov.R;
+import com.application.qrov.activities.ProdutoActivity;
 import com.application.qrov.classes.Produto;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -73,7 +74,7 @@ public class BuscaFragment extends Fragment {
         verProduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Produto.class);
+                Intent intent = new Intent(getActivity(), ProdutoActivity.class);
                 intent.putExtra("QR-Code", resultado.getText().toString());
                 startActivity(intent);
             }
@@ -83,20 +84,23 @@ public class BuscaFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null){
-            if(result.getContents()==null){
+        if (result != null) {
+            if (result.getContents() == null) {
                 Snackbar.make(Objects.requireNonNull(getView()), "Leitura cancelada", Snackbar.LENGTH_LONG).show();
                 card.setVisibility(View.INVISIBLE);
                 resultado.setText("");
                 verProduto.setEnabled(false);
+            } else {
+                for (Produto produto : Produto.produtos) {
+                    if (produto.toString().equals(result.getContents())) {
+                        card.setVisibility(View.VISIBLE);
+                        resultado.setText(result.getContents());
+                        verProduto.setEnabled(true);
+                        break;
+                    }
+                }
             }
-            else {
-                card.setVisibility(View.VISIBLE);
-                resultado.setText(result.getContents());
-                verProduto.setEnabled(true);
-            }
-        }
-        else {
+        } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }

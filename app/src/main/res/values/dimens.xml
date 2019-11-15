@@ -2,4 +2,5 @@
 <resources>
     <dimen name="buttonCornerRadius">30dp</dimen>
     <dimen name="cardViewRadius">10dp</dimen>
+    <dimen name="imgWidth">300px</dimen>
 </resources>
