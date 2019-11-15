@@ -13,7 +13,7 @@ import com.application.qrov.fragments.CadastroFragment;
 import com.application.qrov.fragments.MaisFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.itemBusca);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new BuscaFragment()).commit();
+        }
     }
 
     @Override

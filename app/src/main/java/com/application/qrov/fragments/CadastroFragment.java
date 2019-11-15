@@ -1,6 +1,7 @@
 package com.application.qrov.fragments;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.application.qrov.R;
+import com.application.qrov.activities.ProdutoActivity;
 import com.application.qrov.classes.Localizacao;
 import com.application.qrov.classes.Produto;
 import com.google.android.material.snackbar.Snackbar;
@@ -88,7 +90,7 @@ public class CadastroFragment extends Fragment {
 
                     Produto.produtos.add(produto);
 
-                    Intent intent = new Intent(getActivity(), Produto.class);
+                    Intent intent = new Intent(getActivity(), ProdutoActivity.class);
                     intent.putExtra("QR-Code", produto.QRCode());
                     startActivity(intent);
                     getActivity().finish();

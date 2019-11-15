@@ -16,7 +16,9 @@
             android:name=".activities.AjudaActivity"
             android:parentActivityName=".activities.MainActivity" />
         <activity android:name=".activities.EstoqueActivity" />
-        <activity android:name=".activities.ListaProdutosActivity" />
+        <activity
+            android:name=".activities.ListaProdutosActivity"
+            android:parentActivityName=".activities.ProdutoActivity" />
         <activity android:name=".activities.ProdutoActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity

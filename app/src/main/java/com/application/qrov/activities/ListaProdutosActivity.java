@@ -29,7 +29,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
         listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ListaProdutosActivity.this, Produto.class);
+                Intent intent = new Intent(ListaProdutosActivity.this, ProdutoActivity.class);
                 intent.putExtra("QR-Code", Produto.produtos.get(position).QRCode());
                 startActivity(intent);
             }
