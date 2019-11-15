@@ -92,7 +92,7 @@ public class EstoqueActivity extends AppCompatActivity {
                                     Produto.produtos.set(produto, editavel);
                                     finish();
                                 } else {
-                                    Snackbar.make(new View(EstoqueActivity.this), "A quantidade não pode ser atualizada", Snackbar.LENGTH_LONG).show();
+                                    Snackbar.make(getWindow().getDecorView().getRootView(), "Alguns campos estão invalidados", Snackbar.LENGTH_LONG).show();
                                 }
                             }
                         });
