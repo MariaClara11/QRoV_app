@@ -35,7 +35,7 @@ public class EstoqueActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estoque);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Alterar quantidade em estoque");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Alterar estoque");
 
         operacao = findViewById(R.id.operacao);
         entrada = findViewById(R.id.radioButtonEntrada);

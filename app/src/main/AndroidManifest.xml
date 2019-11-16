@@ -9,15 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activities.TermosActivity"
-            android:parentActivityName=".activities.MainActivity"></activity>
-        <activity
-            android:name=".activities.AjudaActivity"
-            android:parentActivityName=".activities.MainActivity" />
-        <activity
-            android:name=".activities.EstoqueActivity"
-            android:parentActivityName=".activities.ProdutoActivity" />
+        <activity android:name=".activities.TermosActivity" />
+        <activity android:name=".activities.AjudaActivity" />
+        <activity android:name=".activities.EstoqueActivity" />
         <activity android:name=".activities.ListaProdutosActivity" />
         <activity android:name=".activities.ProdutoActivity" />
         <activity android:name=".activities.MainActivity" />
