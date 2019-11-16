@@ -64,7 +64,6 @@ public class EstoqueActivity extends AppCompatActivity {
             finish();
         }
 
-        entrada.setChecked(true);
         operacao.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -140,6 +139,6 @@ public class EstoqueActivity extends AppCompatActivity {
     }
 
     public void showSnackbar(String msg) {
-        Snackbar.make(new View(EstoqueActivity.this), msg, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(findViewById(R.id.content), msg, Snackbar.LENGTH_LONG).show();
     }
 }
