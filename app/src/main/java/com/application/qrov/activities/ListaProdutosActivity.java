@@ -12,6 +12,8 @@ import com.application.qrov.R;
 import com.application.qrov.classes.ListaProdutosAdapter;
 import com.application.qrov.classes.Produto;
 
+import java.util.Objects;
+
 public class ListaProdutosActivity extends AppCompatActivity {
 
     ListView listaProdutos;
@@ -21,8 +23,9 @@ public class ListaProdutosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos);
 
-        listaProdutos = findViewById(R.id.listaProdutos);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Lista de produtos");
 
+        listaProdutos = findViewById(R.id.listaProdutos);
         ListaProdutosAdapter adapter = new ListaProdutosAdapter(ListaProdutosActivity.this, Produto.produtos);
         listaProdutos.setAdapter(adapter);
 

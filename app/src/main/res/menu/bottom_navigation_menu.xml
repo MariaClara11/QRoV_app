@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/itemBusca"
         android:icon="@drawable/outline_search_24"
+        app:showAsAction="ifRoom"
         android:title="Busca" />
     <item
         android:id="@+id/itemCadastro"
         android:icon="@drawable/outline_note_add_24"
+        app:showAsAction="ifRoom"
         android:title="Cadastro" />
     <item
         android:id="@+id/itemMais"
         android:icon="@drawable/outline_more_horiz_24"
+        app:showAsAction="ifRoom"
         android:title="Mais" />
 </menu>

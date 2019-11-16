@@ -64,6 +64,7 @@ public class EstoqueActivity extends AppCompatActivity {
             finish();
         }
 
+        entrada.setChecked(true);
         operacao.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -73,10 +74,14 @@ public class EstoqueActivity extends AppCompatActivity {
                         done.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Produto editavel = Produto.produtos.get(produto);
-                                editavel.setQuantidade(editavel.getQuantidade() + Integer.parseInt(qtd.getText().toString()));
-                                Produto.produtos.set(produto, editavel);
-                                finish();
+                                if (!TextUtils.isEmpty(qtd.getText().toString())) {
+                                    Produto editavel = Produto.produtos.get(produto);
+                                    editavel.setQuantidade(editavel.getQuantidade() + Integer.parseInt(qtd.getText().toString()));
+                                    Produto.produtos.set(produto, editavel);
+                                    finish();
+                                } else {
+                                    showSnackbar("Quantidade inválida");
+                                }
                             }
                         });
                         break;
@@ -86,13 +91,17 @@ public class EstoqueActivity extends AppCompatActivity {
                         done.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Produto editavel = Produto.produtos.get(produto);
-                                if (editavel.getQuantidade() >= Integer.parseInt(qtd.getText().toString())) {
-                                    editavel.setQuantidade(editavel.getQuantidade() - Integer.parseInt(qtd.getText().toString()));
-                                    Produto.produtos.set(produto, editavel);
-                                    finish();
+                                if (!TextUtils.isEmpty(qtd.getText().toString())) {
+                                    Produto editavel = Produto.produtos.get(produto);
+                                    if (editavel.getQuantidade() >= Integer.parseInt(qtd.getText().toString())) {
+                                        editavel.setQuantidade(editavel.getQuantidade() - Integer.parseInt(qtd.getText().toString()));
+                                        Produto.produtos.set(produto, editavel);
+                                        finish();
+                                    } else {
+                                        showSnackbar("A quantidade não pode ser atualizada");
+                                    }
                                 } else {
-                                    Snackbar.make(getWindow().getDecorView().getRootView(), "Alguns campos estão invalidados", Snackbar.LENGTH_LONG).show();
+                                    showSnackbar("Quantidade inválida");
                                 }
                             }
                         });
@@ -128,5 +137,9 @@ public class EstoqueActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void showSnackbar(String msg) {
+        Snackbar.make(new View(EstoqueActivity.this), msg, Snackbar.LENGTH_LONG).show();
     }
 }

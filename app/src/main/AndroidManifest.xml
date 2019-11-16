@@ -15,13 +15,11 @@
         <activity
             android:name=".activities.AjudaActivity"
             android:parentActivityName=".activities.MainActivity" />
-        <activity android:name=".activities.EstoqueActivity" />
         <activity
-            android:name=".activities.ListaProdutosActivity"
+            android:name=".activities.EstoqueActivity"
             android:parentActivityName=".activities.ProdutoActivity" />
-        <activity
-            android:name=".activities.ProdutoActivity"
-            android:parentActivityName=".activities.MainActivity" />
+        <activity android:name=".activities.ListaProdutosActivity" />
+        <activity android:name=".activities.ProdutoActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity
             android:name=".activities.Captura"

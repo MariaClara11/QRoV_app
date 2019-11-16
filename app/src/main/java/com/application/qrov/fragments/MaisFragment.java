@@ -17,11 +17,13 @@ import android.widget.ListView;
 
 import com.application.qrov.R;
 import com.application.qrov.activities.AjudaActivity;
+import com.application.qrov.activities.OpenActivity;
 import com.application.qrov.activities.TermosActivity;
 import com.application.qrov.classes.ListaOpcoesAdapter;
 import com.application.qrov.classes.Opcao;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,7 +73,7 @@ public class MaisFragment extends Fragment {
                         break;
 
                     case 1:
-                        new AlertDialog.Builder(getActivity())
+                        new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
                                 .setTitle("Contato")
                                 .setMessage("Entre em contato com os desenvolvedores através do e-mail\ndevelop@qrov.com")
                                 .setPositiveButton("OK", null)
@@ -83,7 +85,8 @@ public class MaisFragment extends Fragment {
                         break;
 
                     case 3:
-                        getActivity().finish();
+                        startActivity(new Intent(getActivity(), OpenActivity.class));
+                        Objects.requireNonNull(getActivity()).finish();
                         break;
                 }
             }
