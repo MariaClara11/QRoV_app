@@ -17,6 +17,8 @@ import com.application.qrov.R;
 import com.application.qrov.classes.Produto;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Objects;
+
 public class EstoqueActivity extends AppCompatActivity {
 
     private int produto;
@@ -32,6 +34,8 @@ public class EstoqueActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estoque);
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Alterar quantidade em estoque");
 
         operacao = findViewById(R.id.operacao);
         entrada = findViewById(R.id.radioButtonEntrada);
