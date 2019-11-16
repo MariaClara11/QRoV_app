@@ -1,7 +1,6 @@
 package com.application.qrov.fragments;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -24,7 +23,6 @@ import com.application.qrov.activities.ProdutoActivity;
 import com.application.qrov.classes.Localizacao;
 import com.application.qrov.classes.Produto;
 import com.application.qrov.classes.Unidade;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
 
@@ -52,7 +50,7 @@ public class CadastroFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, Unidade.unidades);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_spinner_item, Unidade.unidades);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         final Spinner spinner = view.findViewById(R.id.spinner);
