@@ -105,6 +105,9 @@ public class EstoqueActivity extends AppCompatActivity {
                             }
                         });
                         break;
+
+                    default:
+                        showSnackbar("Operação inválida");
                 }
             }
         });
