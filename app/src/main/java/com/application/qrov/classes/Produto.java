@@ -15,6 +15,10 @@ public class Produto {
     private String localizacao;
     private String descricao;
 
+    public static void preenche() {
+        produtos.add(new Produto(234, "Tule rosa", "ELO7", "metro (m)", 50, 120, "A3-C7-P3-N2", "Rolo de tule rosa bebê"));
+    }
+
     public Produto() {
     }
 
@@ -95,7 +99,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "\nFornecedor (CNPJ): " + getFornecedor() +
+        return "\nFornecedor: " + getFornecedor() +
                 "\nUnidade de saída: " + getUnidadeSaida() +
                 "\nEstoque mínimo: " + getMinimo() +
                 "\nQuantidade: " + getQuantidade() +
@@ -106,7 +110,7 @@ public class Produto {
     public String QRCode() {
         return "\nID: " + getId() +
                 "\nNome: " + getNome() +
-                "\nFornecedor (CNPJ): " + getFornecedor() +
+                "\nFornecedor: " + getFornecedor() +
                 "\nUnidade de saída: " + getUnidadeSaida() +
                 "\nLoalização: " + getLocalizacao() +
                 "\nDescrição: " + getDescricao();

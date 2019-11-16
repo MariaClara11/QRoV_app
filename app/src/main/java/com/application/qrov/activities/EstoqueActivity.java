@@ -1,5 +1,6 @@
 package com.application.qrov.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -83,7 +84,11 @@ public class EstoqueActivity extends AppCompatActivity {
                                     Produto.produtos.set(produto, editavel);
                                     finish();
                                 } else {
-                                    showSnackbar("Quantidade inválida");
+                                    new AlertDialog.Builder(EstoqueActivity.this)
+                                            .setTitle("Quantidade inválida!")
+                                            .setMessage("Preencha o campo com as quantidades adicionadas.")
+                                            .setPositiveButton("OK", null)
+                                            .show();
                                 }
                             }
                         });
@@ -101,17 +106,22 @@ public class EstoqueActivity extends AppCompatActivity {
                                         Produto.produtos.set(produto, editavel);
                                         finish();
                                     } else {
-                                        showSnackbar("A quantidade não pode ser atualizada");
+                                        new AlertDialog.Builder(EstoqueActivity.this)
+                                                .setTitle("Quantidade inválida!")
+                                                .setMessage("Não há o suficiente em estoque.")
+                                                .setPositiveButton("OK", null)
+                                                .show();
                                     }
                                 } else {
-                                    showSnackbar("Quantidade inválida");
+                                    new AlertDialog.Builder(EstoqueActivity.this)
+                                            .setTitle("Quantidade inválida!")
+                                            .setMessage("Preencha o campo com as quantidades retiradas.")
+                                            .setPositiveButton("OK", null)
+                                            .show();
                                 }
                             }
                         });
                         break;
-
-                    default:
-                        showSnackbar("Operação inválida");
                 }
             }
         });
@@ -145,7 +155,4 @@ public class EstoqueActivity extends AppCompatActivity {
         });
     }
 
-    public void showSnackbar(String msg) {
-        Snackbar.make(findViewById(R.id.content), msg, Snackbar.LENGTH_LONG).show();
-    }
 }

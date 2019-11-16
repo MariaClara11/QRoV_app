@@ -96,7 +96,6 @@ public class BuscaFragment extends Fragment {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null && resultCode == RESULT_OK) {
             if (result.getContents() == null) {
-                Snackbar.make(Objects.requireNonNull(getView()), "Leitura cancelada", Snackbar.LENGTH_LONG).show();
                 card.setVisibility(View.INVISIBLE);
                 verProduto.setEnabled(false);
             } else {

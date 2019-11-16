@@ -7,19 +7,23 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.application.qrov.R;
 import com.application.qrov.activities.ProdutoActivity;
 import com.application.qrov.classes.Localizacao;
 import com.application.qrov.classes.Produto;
+import com.application.qrov.classes.Unidade;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
@@ -48,9 +52,11 @@ public class CadastroFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        for (int i = 0; i < campos.length; i++) {
-            campos[i] = new EditText(getContext());
-        }
+        ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, Unidade.unidades);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        final Spinner spinner = view.findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
 
         campos[0] = view.findViewById(R.id.inputNome);
         campos[1] = view.findViewById(R.id.inputFornecedor);
@@ -81,6 +87,7 @@ public class CadastroFragment extends Fragment {
                     produto.setId(Produto.produtos.size());
                     produto.setNome(nome);
                     produto.setFornecedor(fornecedor);
+                    produto.setUnidadeSaida(spinner.getSelectedItem().toString());
                     produto.setMinimo(minimo);
                     produto.setLocalizacao(localizacao);
                     produto.setDescricao(descricao);
@@ -92,7 +99,11 @@ public class CadastroFragment extends Fragment {
                     startActivity(intent);
                     Objects.requireNonNull(getActivity()).finish();
                 } else {
-                    Snackbar.make(getActivity().findViewById(android.R.id.content), "Alguns campos estão invalidados", Snackbar.LENGTH_LONG).show();
+                    new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
+                            .setTitle("Campos ivalidados!")
+                            .setMessage("Um ou mais campos não foram preenchidos corretamente.")
+                            .setPositiveButton("OK", null)
+                            .show();
                 }
             }
         });
