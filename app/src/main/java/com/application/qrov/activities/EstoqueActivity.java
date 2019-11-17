@@ -1,8 +1,5 @@
 package com.application.qrov.activities;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,9 +13,11 @@ import android.widget.TextView;
 
 import com.application.qrov.R;
 import com.application.qrov.classes.Produto;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EstoqueActivity extends AppCompatActivity {
 

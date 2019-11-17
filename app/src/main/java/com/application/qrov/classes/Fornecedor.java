@@ -2,8 +2,8 @@ package com.application.qrov.classes;
 
 public class Fornecedor {
 
-    String cnpj;
-    String nome;
+    private String cnpj;
+    private String nome;
 
     public Fornecedor() {
     }

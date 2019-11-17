@@ -31,8 +31,7 @@ import java.util.Objects;
  */
 public class CadastroFragment extends Fragment {
 
-    EditText[] campos = new EditText[8];
-    Button confirma;
+    private EditText[] campos = new EditText[8];
 
     public CadastroFragment() {
         // Required empty public constructor
@@ -64,7 +63,7 @@ public class CadastroFragment extends Fragment {
         campos[5] = view.findViewById(R.id.prateleira);
         campos[6] = view.findViewById(R.id.nivel);
         campos[7] = view.findViewById(R.id.inputDescricao);
-        confirma = view.findViewById(R.id.confirma);
+        Button confirma = view.findViewById(R.id.confirma);
 
         confirma.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +107,7 @@ public class CadastroFragment extends Fragment {
 
     }
 
-    public boolean camposValidos() {
+    private boolean camposValidos() {
         for (EditText campo : campos) {
             if (TextUtils.isEmpty(campo.getText())) {
                 return false;

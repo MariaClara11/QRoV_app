@@ -21,6 +21,8 @@ import com.application.qrov.activities.OpenActivity;
 import com.application.qrov.activities.TermosActivity;
 import com.application.qrov.classes.ListaOpcoesAdapter;
 import com.application.qrov.classes.Opcao;
+import com.application.qrov.classes.Produto;
+import com.application.qrov.classes.Unidade;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -30,8 +32,7 @@ import java.util.Objects;
  */
 public class MaisFragment extends Fragment {
 
-    ListView listaOpcoes;
-    ArrayList<Opcao> opcoes = new ArrayList<>();
+    private ArrayList<Opcao> opcoes = new ArrayList<>();
 
     public MaisFragment() {
         // Required empty public constructor
@@ -49,7 +50,7 @@ public class MaisFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        listaOpcoes = view.findViewById(R.id.listaOpcoes);
+        ListView listaOpcoes = view.findViewById(R.id.listaOpcoes);
 
         Opcao ajuda = new Opcao(R.drawable.outline_help_outline_24, "Ajuda");
         Opcao contato = new Opcao(R.drawable.outline_message_24, "Contato");
@@ -86,6 +87,8 @@ public class MaisFragment extends Fragment {
 
                     case 3:
                         startActivity(new Intent(getActivity(), OpenActivity.class));
+                        Produto.produtos.clear();
+                        Unidade.unidades.clear();
                         Objects.requireNonNull(getActivity()).finish();
                         break;
                 }

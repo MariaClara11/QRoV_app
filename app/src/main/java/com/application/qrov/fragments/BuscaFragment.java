@@ -3,12 +3,6 @@ package com.application.qrov.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +10,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.application.qrov.activities.Captura;
 import com.application.qrov.R;
+import com.application.qrov.activities.Captura;
 import com.application.qrov.activities.ListaProdutosActivity;
 import com.application.qrov.activities.ProdutoActivity;
 import com.application.qrov.classes.Produto;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import java.util.Objects;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -34,10 +30,9 @@ import static android.app.Activity.RESULT_OK;
  */
 public class BuscaFragment extends Fragment {
 
-    ImageView abrirCamera;
-    TextView resultado, todos;
-    Button verProduto;
-    CardView card;
+    private TextView resultado;
+    private Button verProduto;
+    private CardView card;
 
     public BuscaFragment() {
         // Required empty public constructor
@@ -55,9 +50,9 @@ public class BuscaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        abrirCamera = view.findViewById(R.id.abrirCamera);
+        ImageView abrirCamera = view.findViewById(R.id.abrirCamera);
         resultado = view.findViewById(R.id.resultado);
-        todos = view.findViewById(R.id.todos);
+        TextView todos = view.findViewById(R.id.todos);
         verProduto = view.findViewById(R.id.verProduto);
         card = view.findViewById(R.id.card);
 

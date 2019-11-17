@@ -48,35 +48,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imgProduto"
-                android:layout_width="@dimen/imgWidth"
-                android:layout_height="@dimen/imgWidth"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/tule" />
-
-            <ImageView
-                android:id="@+id/qrProduto"
-                android:layout_width="@dimen/imgWidth"
-                android:layout_height="@dimen/imgWidth"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgProduto"
-                app:srcCompat="@drawable/ic_launcher_background" />
-
-            <ImageView
+            <TextView
                 android:id="@+id/printQR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:tint="@color/md_black_1000"
-                app:layout_constraintEnd_toEndOf="@+id/qrProduto"
-                app:layout_constraintStart_toStartOf="@+id/qrProduto"
-                app:layout_constraintTop_toBottomOf="@+id/qrProduto"
-                app:srcCompat="@drawable/outline_print_24" />
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/outline_print_24"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/md_black_1000"
+                android:gravity="center"
+                android:text="Imprimir etiquetas QR-Code"
+                android:textColor="@color/md_black_1000"
+                app:layout_constraintEnd_toEndOf="@+id/cardView2"
+                app:layout_constraintStart_toStartOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
             <TextView
                 android:id="@+id/infoProduto"
@@ -87,6 +72,61 @@
                 android:textColor="@color/md_black_1000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/colorAccent"
+                app:cardCornerRadius="@dimen/cardViewRadius"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgProduto"
+                        android:layout_width="@dimen/imgWidth"
+                        android:layout_height="@dimen/imgWidth"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.6"
+                        app:layout_constraintStart_toEndOf="@+id/divider8"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/tule" />
+
+                    <ImageView
+                        android:id="@+id/qrProduto"
+                        android:layout_width="@dimen/imgWidth"
+                        android:layout_height="@dimen/imgWidth"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/divider8"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/divider8"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="@+id/qrProduto"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/qrProduto" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
