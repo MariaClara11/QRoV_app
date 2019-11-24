@@ -51,4 +51,9 @@ public class MateriaPrima {
     public void setVisibilidade(int visibilidade) {
         this.visibilidade = visibilidade;
     }
+
+    @Override
+    public String toString() {
+        return "Matéria-prima: " + idProduto;
+    }
 }

@@ -51,4 +51,9 @@ public class Insumo {
     public void setVisibilidade(int visibilidade) {
         this.visibilidade = visibilidade;
     }
+
+    @Override
+    public String toString() {
+        return "Insumo: " + idInsumo;
+    }
 }
