@@ -100,8 +100,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.6"
                         app:layout_constraintStart_toEndOf="@+id/divider8"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/tule" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/qrProduto"

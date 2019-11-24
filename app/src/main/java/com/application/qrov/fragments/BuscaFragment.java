@@ -14,7 +14,6 @@ import com.application.qrov.R;
 import com.application.qrov.activities.Captura;
 import com.application.qrov.activities.ListaProdutosActivity;
 import com.application.qrov.activities.ProdutoActivity;
-import com.application.qrov.util.Produto;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -72,9 +71,7 @@ public class BuscaFragment extends Fragment {
         verProduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ProdutoActivity.class);
-                intent.putExtra("QR-Code", resultado.getText().toString());
-                startActivity(intent);
+                startActivity(new Intent(getActivity(), ProdutoActivity.class));
             }
         });
 
@@ -94,14 +91,9 @@ public class BuscaFragment extends Fragment {
                 card.setVisibility(View.INVISIBLE);
                 verProduto.setEnabled(false);
             } else {
-                for (Produto produto : Produto.produtos) {
-                    if (produto.QRCode().equals(result.getContents())) {
-                        card.setVisibility(View.VISIBLE);
-                        resultado.setText(result.getContents());
-                        verProduto.setEnabled(true);
-                        break;
-                    }
-                }
+                card.setVisibility(View.VISIBLE);
+                resultado.setText(result.getContents());
+                verProduto.setEnabled(true);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);

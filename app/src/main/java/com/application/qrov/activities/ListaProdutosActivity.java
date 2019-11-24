@@ -9,8 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.application.qrov.R;
-import com.application.qrov.util.ListaProdutosAdapter;
-import com.application.qrov.util.Produto;
+
 
 import java.util.Objects;
 
@@ -26,15 +25,11 @@ public class ListaProdutosActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle("Lista de produtos");
 
         listaProdutos = findViewById(R.id.listaProdutos);
-        ListaProdutosAdapter adapter = new ListaProdutosAdapter(ListaProdutosActivity.this, Produto.produtos);
-        listaProdutos.setAdapter(adapter);
 
         listaProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ListaProdutosActivity.this, ProdutoActivity.class);
-                intent.putExtra("QR-Code", Produto.produtos.get(position).QRCode());
-                startActivity(intent);
+                startActivity(new Intent(ListaProdutosActivity.this, ProdutoActivity.class));
             }
         });
     }

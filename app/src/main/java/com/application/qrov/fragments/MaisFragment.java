@@ -18,11 +18,10 @@ import android.widget.ListView;
 import com.application.qrov.R;
 import com.application.qrov.activities.AjudaActivity;
 import com.application.qrov.activities.OpenActivity;
+import com.application.qrov.activities.SobreActivity;
 import com.application.qrov.activities.TermosActivity;
 import com.application.qrov.util.ListaOpcoesAdapter;
 import com.application.qrov.util.Opcao;
-import com.application.qrov.util.Produto;
-import com.application.qrov.util.Unidade;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -54,11 +53,13 @@ public class MaisFragment extends Fragment {
 
         Opcao ajuda = new Opcao(R.drawable.outline_help_outline_24, "Ajuda");
         Opcao contato = new Opcao(R.drawable.outline_message_24, "Contato");
+        Opcao sobre = new Opcao(R.drawable.outline_info_24, "Sobre");
         Opcao termos = new Opcao(R.drawable.outline_insert_drive_file_24, "Termos de uso");
         Opcao sair = new Opcao(R.drawable.outline_exit_to_app_24, "Sair");
 
         opcoes.add(ajuda);
         opcoes.add(contato);
+        opcoes.add(sobre);
         opcoes.add(termos);
         opcoes.add(sair);
 
@@ -82,13 +83,15 @@ public class MaisFragment extends Fragment {
                         break;
 
                     case 2:
-                        startActivity(new Intent(getActivity(), TermosActivity.class));
+                        startActivity(new Intent(getActivity(), SobreActivity.class));
                         break;
 
                     case 3:
+                        startActivity(new Intent(getActivity(), TermosActivity.class));
+                        break;
+
+                    case 4:
                         startActivity(new Intent(getActivity(), OpenActivity.class));
-                        Produto.produtos.clear();
-                        Unidade.unidades.clear();
                         Objects.requireNonNull(getActivity()).finish();
                         break;
                 }

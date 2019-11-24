@@ -12,7 +12,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.application.qrov.R;
-import com.application.qrov.util.Produto;
 
 import java.util.Objects;
 
@@ -46,27 +45,7 @@ public class EstoqueActivity extends AppCompatActivity {
         layout = findViewById(R.id.layout);
         done = findViewById(R.id.done);
 
-        String QRCode = getIntent().getStringExtra("QR-Code");
-
         textProduto = findViewById(R.id.produto);
-
-
-        boolean encontrado = false;
-        int cont = 0;
-        for (Produto produto1 : Produto.produtos) {
-            if (produto1.QRCode().equals(QRCode)) {
-                produto = cont;
-                encontrado = true;
-                String texto = "Nome: " + Produto.produtos.get(produto).getNome() + "\nID: " + Produto.produtos.get(produto).getId() + Produto.produtos.get(produto).toString();
-                textProduto.setText(texto);
-                break;
-            }
-            cont++;
-        }
-
-        if (!encontrado) {
-            finish();
-        }
 
         operacao.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -78,9 +57,6 @@ public class EstoqueActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 if (!TextUtils.isEmpty(qtd.getText().toString())) {
-                                    Produto editavel = Produto.produtos.get(produto);
-                                    editavel.setQuantidade(editavel.getQuantidade() + Integer.parseInt(qtd.getText().toString()));
-                                    Produto.produtos.set(produto, editavel);
                                     finish();
                                 } else {
                                     new AlertDialog.Builder(EstoqueActivity.this)
@@ -99,18 +75,7 @@ public class EstoqueActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 if (!TextUtils.isEmpty(qtd.getText().toString())) {
-                                    Produto editavel = Produto.produtos.get(produto);
-                                    if (editavel.getQuantidade() >= Integer.parseInt(qtd.getText().toString())) {
-                                        editavel.setQuantidade(editavel.getQuantidade() - Integer.parseInt(qtd.getText().toString()));
-                                        Produto.produtos.set(produto, editavel);
-                                        finish();
-                                    } else {
-                                        new AlertDialog.Builder(EstoqueActivity.this)
-                                                .setTitle("Quantidade inválida!")
-                                                .setMessage("Não há o suficiente em estoque.")
-                                                .setPositiveButton("OK", null)
-                                                .show();
-                                    }
+                                    finish();
                                 } else {
                                     new AlertDialog.Builder(EstoqueActivity.this)
                                             .setTitle("Quantidade inválida!")
