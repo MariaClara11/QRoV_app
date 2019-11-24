@@ -9,8 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.application.qrov.R;
-import com.application.qrov.classes.ListaProdutosAdapter;
-import com.application.qrov.classes.Produto;
+import com.application.qrov.util.ListaProdutosAdapter;
+import com.application.qrov.util.Produto;
 
 import java.util.Objects;
 

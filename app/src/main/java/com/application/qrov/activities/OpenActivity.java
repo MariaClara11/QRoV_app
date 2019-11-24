@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.application.qrov.R;
-import com.application.qrov.classes.Produto;
-import com.application.qrov.classes.Unidade;
+import com.application.qrov.util.Produto;
+import com.application.qrov.util.Unidade;
 
 public class OpenActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.application.qrov.classes;
+package com.application.qrov.util;
 
 import android.app.Activity;
 import android.view.View;

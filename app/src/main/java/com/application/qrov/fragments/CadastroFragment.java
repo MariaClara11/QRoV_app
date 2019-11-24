@@ -20,9 +20,9 @@ import android.widget.Spinner;
 
 import com.application.qrov.R;
 import com.application.qrov.activities.ProdutoActivity;
-import com.application.qrov.classes.Localizacao;
-import com.application.qrov.classes.Produto;
-import com.application.qrov.classes.Unidade;
+import com.application.qrov.util.Localizacao;
+import com.application.qrov.util.Produto;
+import com.application.qrov.util.Unidade;
 
 import java.util.Objects;
 

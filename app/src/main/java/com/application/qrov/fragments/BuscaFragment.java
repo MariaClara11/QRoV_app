@@ -14,7 +14,7 @@ import com.application.qrov.R;
 import com.application.qrov.activities.Captura;
 import com.application.qrov.activities.ListaProdutosActivity;
 import com.application.qrov.activities.ProdutoActivity;
-import com.application.qrov.classes.Produto;
+import com.application.qrov.util.Produto;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 

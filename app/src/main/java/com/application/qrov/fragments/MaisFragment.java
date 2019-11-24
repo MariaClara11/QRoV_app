@@ -19,10 +19,10 @@ import com.application.qrov.R;
 import com.application.qrov.activities.AjudaActivity;
 import com.application.qrov.activities.OpenActivity;
 import com.application.qrov.activities.TermosActivity;
-import com.application.qrov.classes.ListaOpcoesAdapter;
-import com.application.qrov.classes.Opcao;
-import com.application.qrov.classes.Produto;
-import com.application.qrov.classes.Unidade;
+import com.application.qrov.util.ListaOpcoesAdapter;
+import com.application.qrov.util.Opcao;
+import com.application.qrov.util.Produto;
+import com.application.qrov.util.Unidade;
 
 import java.util.ArrayList;
 import java.util.Objects;

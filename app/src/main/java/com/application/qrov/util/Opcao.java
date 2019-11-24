@@ -1,4 +1,4 @@
-package com.application.qrov.classes;
+package com.application.qrov.util;
 
 public class Opcao {
 

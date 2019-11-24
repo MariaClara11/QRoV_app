@@ -12,7 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.application.qrov.R;
-import com.application.qrov.classes.Produto;
+import com.application.qrov.util.Produto;
 
 import java.util.Objects;
 
