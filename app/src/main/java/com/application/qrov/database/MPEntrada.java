@@ -7,23 +7,23 @@ public class MPEntrada {
     private float preco;
     private int qtd;
     private float total;
-    private int codProduto;
+    private int idProduto;
 
-    public MPEntrada(int idMPEntrada, int estoqueMinimo, float preco, int qtd, float total, int codProduto) {
+    public MPEntrada(int idMPEntrada, int estoqueMinimo, float preco, int qtd, float total, int idProduto) {
         this.idMPEntrada = idMPEntrada;
         this.estoqueMinimo = estoqueMinimo;
         this.preco = preco;
         this.qtd = qtd;
         this.total = total;
-        this.codProduto = codProduto;
+        this.idProduto = idProduto;
     }
 
-    public MPEntrada(int estoqueMinimo, float preco, int qtd, float total, int codProduto) {
+    public MPEntrada(int estoqueMinimo, float preco, int qtd, float total, int idProduto) {
         this.estoqueMinimo = estoqueMinimo;
         this.preco = preco;
         this.qtd = qtd;
         this.total = total;
-        this.codProduto = codProduto;
+        this.idProduto = idProduto;
     }
 
     public int getIdMPEntrada() {
@@ -66,11 +66,11 @@ public class MPEntrada {
         this.total = total;
     }
 
-    public int getCodProduto() {
-        return codProduto;
+    public int getIdProduto() {
+        return idProduto;
     }
 
-    public void setCodProduto(int codProduto) {
-        this.codProduto = codProduto;
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 }

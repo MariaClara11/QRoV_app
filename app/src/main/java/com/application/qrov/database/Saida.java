@@ -9,23 +9,23 @@ public class Saida {
     private float qtdSI;
     private Date data;
     private float total;
-    private int codProduto;
+    private int idProduto;
 
-    public Saida(int idSaida, float preco, float qtdSI, Date data, float total, int codProduto) {
+    public Saida(int idSaida, float preco, float qtdSI, Date data, float total, int idProduto) {
         this.idSaida = idSaida;
         this.preco = preco;
         this.qtdSI = qtdSI;
         this.data = data;
         this.total = total;
-        this.codProduto = codProduto;
+        this.idProduto = idProduto;
     }
 
-    public Saida(float preco, float qtdSI, Date data, float total, int codProduto) {
+    public Saida(float preco, float qtdSI, Date data, float total, int idProduto) {
         this.preco = preco;
         this.qtdSI = qtdSI;
         this.data = data;
         this.total = total;
-        this.codProduto = codProduto;
+        this.idProduto = idProduto;
     }
 
     public int getIdSaida() {
@@ -68,11 +68,11 @@ public class Saida {
         this.total = total;
     }
 
-    public int getCodProduto() {
-        return codProduto;
+    public int getIdProduto() {
+        return idProduto;
     }
 
-    public void setCodProduto(int codProduto) {
-        this.codProduto = codProduto;
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 }

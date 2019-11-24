@@ -2,13 +2,13 @@ package com.application.qrov.database;
 
 public class MateriaPrima {
 
-    private int codProduto;
+    private int idProduto;
     private String nome;
     private int idInsumo;
     private boolean visivel;
 
-    public MateriaPrima(int codProduto, String nome, int idInsumo, boolean visivel) {
-        this.codProduto = codProduto;
+    public MateriaPrima(int idProduto, String nome, int idInsumo, boolean visivel) {
+        this.idProduto = idProduto;
         this.nome = nome;
         this.idInsumo = idInsumo;
         this.visivel = visivel;
@@ -20,12 +20,12 @@ public class MateriaPrima {
         this.visivel = visivel;
     }
 
-    public int getCodProduto() {
-        return codProduto;
+    public int getIdProduto() {
+        return idProduto;
     }
 
-    public void setCodProduto(int codProduto) {
-        this.codProduto = codProduto;
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 
     public String getNome() {

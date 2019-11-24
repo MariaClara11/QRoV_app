@@ -4,19 +4,19 @@ public class Imagem {
 
     private String endereco;
     private String nome;
-    private int codProduto;
+    private int idProduto;
     private int idInsumo;
 
-    public Imagem(String endereco, String nome, int codProduto, int idInsumo) {
+    public Imagem(String endereco, String nome, int idProduto, int idInsumo) {
         this.endereco = endereco;
         this.nome = nome;
-        this.codProduto = codProduto;
+        this.idProduto = idProduto;
         this.idInsumo = idInsumo;
     }
 
-    public Imagem(String nome, int codProduto, int idInsumo) {
+    public Imagem(String nome, int idProduto, int idInsumo) {
         this.nome = nome;
-        this.codProduto = codProduto;
+        this.idProduto = idProduto;
         this.idInsumo = idInsumo;
     }
 
@@ -36,12 +36,12 @@ public class Imagem {
         this.nome = nome;
     }
 
-    public int getCodProduto() {
-        return codProduto;
+    public int getIdProduto() {
+        return idProduto;
     }
 
-    public void setCodProduto(int codProduto) {
-        this.codProduto = codProduto;
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 
     public int getIdInsumo() {

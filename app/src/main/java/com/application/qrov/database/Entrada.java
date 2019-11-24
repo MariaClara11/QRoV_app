@@ -8,21 +8,21 @@ public class Entrada {
     private int chaveAcesso;
     private float valorTotal;
     private Date data;
-    private int idFornecedor;
+    private int cnpj;
 
-    public Entrada(int idEntrada, int chaveAcesso, float valorTotal, Date data, int idFornecedor) {
+    public Entrada(int idEntrada, int chaveAcesso, float valorTotal, Date data, int cnpj) {
         this.idEntrada = idEntrada;
         this.chaveAcesso = chaveAcesso;
         this.valorTotal = valorTotal;
         this.data = data;
-        this.idFornecedor = idFornecedor;
+        this.cnpj = cnpj;
     }
 
-    public Entrada(int chaveAcesso, float valorTotal, Date data, int idFornecedor) {
+    public Entrada(int chaveAcesso, float valorTotal, Date data, int cnpj) {
         this.chaveAcesso = chaveAcesso;
         this.valorTotal = valorTotal;
         this.data = data;
-        this.idFornecedor = idFornecedor;
+        this.cnpj = cnpj;
     }
 
     public int getIdEntrada() {
@@ -57,11 +57,11 @@ public class Entrada {
         this.data = data;
     }
 
-    public int getIdFornecedor() {
-        return idFornecedor;
+    public int getCnpj() {
+        return cnpj;
     }
 
-    public void setIdFornecedor(int idFornecedor) {
-        this.idFornecedor = idFornecedor;
+    public void setCnpj(int cnpj) {
+        this.cnpj = cnpj;
     }
 }

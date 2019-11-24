@@ -1,13 +1,13 @@
 package com.application.qrov.database;
 
-public class Tem {
+public class TemCaracteristica {
 
     private int idCaracteristica;
-    private int codProduto;
+    private int idProduto;
 
-    public Tem(int idCaracteristica, int codProduto) {
+    public TemCaracteristica(int idCaracteristica, int idProduto) {
         this.idCaracteristica = idCaracteristica;
-        this.codProduto = codProduto;
+        this.idProduto = idProduto;
     }
 
     public int getIdCaracteristica() {
@@ -18,11 +18,11 @@ public class Tem {
         this.idCaracteristica = idCaracteristica;
     }
 
-    public int getCodProduto() {
-        return codProduto;
+    public int getIdProduto() {
+        return idProduto;
     }
 
-    public void setCodProduto(int codProduto) {
-        this.codProduto = codProduto;
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 }
