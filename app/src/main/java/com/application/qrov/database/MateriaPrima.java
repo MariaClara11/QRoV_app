@@ -5,19 +5,19 @@ public class MateriaPrima {
     private int idProduto;
     private String nome;
     private int idInsumo;
-    private boolean visivel;
+    private int visibilidade;
 
-    public MateriaPrima(int idProduto, String nome, int idInsumo, boolean visivel) {
+    public MateriaPrima(int idProduto, String nome, int idInsumo, int visibilidade) {
         this.idProduto = idProduto;
         this.nome = nome;
         this.idInsumo = idInsumo;
-        this.visivel = visivel;
+        this.visibilidade = visibilidade;
     }
 
-    public MateriaPrima(String nome, int idInsumo, boolean visivel) {
+    public MateriaPrima(String nome, int idInsumo, int visibilidade) {
         this.nome = nome;
         this.idInsumo = idInsumo;
-        this.visivel = visivel;
+        this.visibilidade = visibilidade;
     }
 
     public int getIdProduto() {
@@ -44,11 +44,11 @@ public class MateriaPrima {
         this.idInsumo = idInsumo;
     }
 
-    public boolean isVisivel() {
-        return visivel;
+    public int getVisibilidade() {
+        return visibilidade;
     }
 
-    public void setVisivel(boolean visivel) {
-        this.visivel = visivel;
+    public void setVisibilidade(int visibilidade) {
+        this.visibilidade = visibilidade;
     }
 }

@@ -5,19 +5,19 @@ public class Insumo {
     private int idInsumo;
     private String nome;
     private int idTipo;
-    private boolean visivel;
+    private int visibilidade;
 
-    public Insumo(int idInsumo, String nome, int idTipo, boolean visivel) {
+    public Insumo(int idInsumo, String nome, int idTipo, int visibilidade) {
         this.idInsumo = idInsumo;
         this.nome = nome;
         this.idTipo = idTipo;
-        this.visivel = visivel;
+        this.visibilidade = visibilidade;
     }
 
-    public Insumo(String nome, int idTipo, boolean visivel) {
+    public Insumo(String nome, int idTipo, int visibilidade) {
         this.nome = nome;
         this.idTipo = idTipo;
-        this.visivel = visivel;
+        this.visibilidade = visibilidade;
     }
 
     public int getIdInsumo() {
@@ -44,11 +44,11 @@ public class Insumo {
         this.idTipo = idTipo;
     }
 
-    public boolean isVisivel() {
-        return visivel;
+    public int getVisibilidade() {
+        return visibilidade;
     }
 
-    public void setVisivel(boolean visivel) {
-        this.visivel = visivel;
+    public void setVisibilidade(int visibilidade) {
+        this.visibilidade = visibilidade;
     }
 }

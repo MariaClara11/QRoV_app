@@ -60,8 +60,7 @@ public class CadastroFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (camposValidos()) {
-                    Intent intent = new Intent(getActivity(), ProdutoActivity.class);
-                    startActivity(intent);
+                    startActivity(new Intent(getActivity(), ProdutoActivity.class));
                     Objects.requireNonNull(getActivity()).finish();
                 } else {
                     new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
