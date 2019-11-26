@@ -1,7 +1,5 @@
 package com.application.qrov.database;
 
-import java.util.ArrayList;
-
 public class MateriaPrima {
 
     private int idProduto;
