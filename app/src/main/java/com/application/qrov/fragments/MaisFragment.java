@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 import com.application.qrov.R;
 import com.application.qrov.activities.AjudaActivity;
-import com.application.qrov.activities.OpenActivity;
+import com.application.qrov.activities.LoginActivity;
 import com.application.qrov.activities.SobreActivity;
 import com.application.qrov.activities.TermosActivity;
 import com.application.qrov.util.ListaOpcoesAdapter;
@@ -91,7 +91,7 @@ public class MaisFragment extends Fragment {
                         break;
 
                     case 4:
-                        startActivity(new Intent(getActivity(), OpenActivity.class));
+                        startActivity(new Intent(getActivity(), LoginActivity.class));
                         Objects.requireNonNull(getActivity()).finish();
                         break;
                 }

@@ -5,18 +5,21 @@ public class Insumo {
     private int idInsumo;
     private String nome;
     private int idTipo;
+    private String localizacao;
     private int visibilidade;
 
-    public Insumo(int idInsumo, String nome, int idTipo, int visibilidade) {
+    public Insumo(int idInsumo, String nome, int idTipo, String localizacao, int visibilidade) {
         this.idInsumo = idInsumo;
         this.nome = nome;
         this.idTipo = idTipo;
+        this.localizacao = localizacao;
         this.visibilidade = visibilidade;
     }
 
-    public Insumo(String nome, int idTipo, int visibilidade) {
+    public Insumo(String nome, int idTipo, String localizacao, int visibilidade) {
         this.nome = nome;
         this.idTipo = idTipo;
+        this.localizacao = localizacao;
         this.visibilidade = visibilidade;
     }
 
@@ -42,6 +45,14 @@ public class Insumo {
 
     public void setIdTipo(int idTipo) {
         this.idTipo = idTipo;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
     }
 
     public int getVisibilidade() {

@@ -38,7 +38,7 @@ public class ListaOpcoesAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = activity.getLayoutInflater().inflate(R.layout.lista_opcoes_item, parent, false);
+        View view = activity.getLayoutInflater().inflate(R.layout.item_lista_opcoes, parent, false);
         Opcao opcao = opcoes.get(position);
 
         TextView nome = view.findViewById(R.id.opcao);

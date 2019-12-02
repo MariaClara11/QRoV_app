@@ -3,13 +3,12 @@ package com.application.qrov.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.application.qrov.R;
 import com.application.qrov.activities.ProdutoActivity;
@@ -26,7 +25,9 @@ import androidx.fragment.app.Fragment;
  */
 public class CadastroFragment extends Fragment {
 
-    private EditText[] campos = new EditText[8];
+    RadioGroup item;
+    RadioButton insumo, materiaPrima;
+    Button prox;
 
     public CadastroFragment() {
         // Required empty public constructor
@@ -44,42 +45,26 @@ public class CadastroFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final Spinner spinner = view.findViewById(R.id.spinner);
+        item = view.findViewById(R.id.RadioGroupItem);
+        insumo = view.findViewById(R.id.RadioInsumo);
+        materiaPrima = view.findViewById(R.id.RadioMateriaPrima);
+        prox = view.findViewById(R.id.prox);
 
-        campos[0] = view.findViewById(R.id.inputNome);
-        campos[1] = view.findViewById(R.id.inputFornecedor);
-        campos[2] = view.findViewById(R.id.inputMinimo);
-        campos[3] = view.findViewById(R.id.andar);
-        campos[4] = view.findViewById(R.id.corredor);
-        campos[5] = view.findViewById(R.id.prateleira);
-        campos[6] = view.findViewById(R.id.nivel);
-        campos[7] = view.findViewById(R.id.inputDescricao);
-        Button confirma = view.findViewById(R.id.confirma);
-
-        confirma.setOnClickListener(new View.OnClickListener() {
+        item.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                if (camposValidos()) {
-                    startActivity(new Intent(getActivity(), ProdutoActivity.class));
-                    Objects.requireNonNull(getActivity()).finish();
-                } else {
-                    new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
-                            .setTitle("Campos ivalidados!")
-                            .setMessage("Um ou mais campos não foram preenchidos corretamente.")
-                            .setPositiveButton("OK", null)
-                            .show();
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.RadioInsumo:
+                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frameCadastro, new CadastroInsumoFragment()).commit();
+                        break;
+
+                    case R.id.RadioMateriaPrima:
+                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frameCadastro, new CadastroInsumoFragment()).commit();
+                        break;
                 }
             }
         });
 
     }
 
-    private boolean camposValidos() {
-        for (EditText campo : campos) {
-            if (TextUtils.isEmpty(campo.getText())) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

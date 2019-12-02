@@ -5,18 +5,21 @@ public class MateriaPrima {
     private int idProduto;
     private String nome;
     private int idInsumo;
+    private String localizacao;
     private int visibilidade;
 
-    public MateriaPrima(int idProduto, String nome, int idInsumo, int visibilidade) {
+    public MateriaPrima(int idProduto, String nome, int idInsumo, String localizacao, int visibilidade) {
         this.idProduto = idProduto;
         this.nome = nome;
         this.idInsumo = idInsumo;
+        this.localizacao = localizacao;
         this.visibilidade = visibilidade;
     }
 
     public MateriaPrima(String nome, int idInsumo, int visibilidade) {
         this.nome = nome;
         this.idInsumo = idInsumo;
+        this.localizacao = localizacao;
         this.visibilidade = visibilidade;
     }
 
@@ -44,6 +47,14 @@ public class MateriaPrima {
         this.idInsumo = idInsumo;
     }
 
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
+    }
+
     public int getVisibilidade() {
         return visibilidade;
     }
@@ -53,7 +64,7 @@ public class MateriaPrima {
     }
 
     @Override
-    public String toString() {
+    public String toString() { //QR Code
         return "Matéria-prima: " + idProduto;
     }
 }
