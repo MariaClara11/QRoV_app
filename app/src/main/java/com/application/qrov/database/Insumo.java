@@ -2,69 +2,72 @@ package com.application.qrov.database;
 
 public class Insumo {
 
-    private int idInsumo;
-    private String nome;
-    private int idTipo;
-    private String localizacao;
-    private int visibilidade;
+    private int Id_Insumo;
+    private String Nome;
+    private int Id_Tipo;
+    private int Id_Localizacao;
+    private int Visivel;
 
-    public Insumo(int idInsumo, String nome, int idTipo, String localizacao, int visibilidade) {
-        this.idInsumo = idInsumo;
-        this.nome = nome;
-        this.idTipo = idTipo;
-        this.localizacao = localizacao;
-        this.visibilidade = visibilidade;
+    public Insumo() {
     }
 
-    public Insumo(String nome, int idTipo, String localizacao, int visibilidade) {
-        this.nome = nome;
-        this.idTipo = idTipo;
-        this.localizacao = localizacao;
-        this.visibilidade = visibilidade;
+    public Insumo(int Id_Insumo, String nome, int Id_Tipo, int Id_Localizacao, int Visivel) {
+        this.Id_Insumo = Id_Insumo;
+        this.Nome = nome;
+        this.Id_Tipo = Id_Tipo;
+        this.Id_Localizacao = Id_Localizacao;
+        this.Visivel = Visivel;
     }
 
-    public int getIdInsumo() {
-        return idInsumo;
+    public Insumo(String nome, int Id_Tipo, int Id_Localizacao, int Visivel) {
+        this.Nome = nome;
+        this.Id_Tipo = Id_Tipo;
+        this.Id_Localizacao = Id_Localizacao;
+        this.Visivel = Visivel;
     }
 
-    public void setIdInsumo(int idInsumo) {
-        this.idInsumo = idInsumo;
+    public int getId_Insumo() {
+        return Id_Insumo;
+    }
+
+    public void setId_Insumo(int id_Insumo) {
+        this.Id_Insumo = id_Insumo;
     }
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.Nome = nome;
     }
 
-    public int getIdTipo() {
-        return idTipo;
+    public int getId_Tipo() {
+        return Id_Tipo;
     }
 
-    public void setIdTipo(int idTipo) {
-        this.idTipo = idTipo;
+    public void setId_Tipo(int id_Tipo) {
+        this.Id_Tipo = id_Tipo;
     }
 
-    public String getLocalizacao() {
-        return localizacao;
+    public int getId_Localizacao() {
+        return Id_Localizacao;
     }
 
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
+    public void setId_Localizacao(int id_Localizacao) {
+        this.Id_Localizacao = id_Localizacao;
     }
 
-    public int getVisibilidade() {
-        return visibilidade;
+    public int getVisivel() {
+        return Visivel;
     }
 
-    public void setVisibilidade(int visibilidade) {
-        this.visibilidade = visibilidade;
+    public void setVisivel(int visivel) {
+        this.Visivel = visivel;
     }
 
     @Override
     public String toString() {
-        return "Insumo: " + idInsumo;
+        return "Insumo: " + Id_Insumo;
     }
 }

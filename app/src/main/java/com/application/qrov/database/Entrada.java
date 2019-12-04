@@ -4,64 +4,67 @@ import java.sql.Date;
 
 public class Entrada {
 
-    private int idEntrada;
-    private int chaveAcesso;
-    private float valorTotal;
-    private Date data;
-    private int cnpj;
+    private int Id_Entrada;
+    private int Chave_Acesso;
+    private float Valor_Total;
+    private Date Data_Entrada;
+    private int Id_Fornecedor;
 
-    public Entrada(int idEntrada, int chaveAcesso, float valorTotal, Date data, int cnpj) {
-        this.idEntrada = idEntrada;
-        this.chaveAcesso = chaveAcesso;
-        this.valorTotal = valorTotal;
-        this.data = data;
-        this.cnpj = cnpj;
+    public Entrada() {
     }
 
-    public Entrada(int chaveAcesso, float valorTotal, Date data, int cnpj) {
-        this.chaveAcesso = chaveAcesso;
-        this.valorTotal = valorTotal;
-        this.data = data;
-        this.cnpj = cnpj;
+    public Entrada(int Id_Entrada, int Chave_Acesso, float Valor_Total, Date Data_Entrada, int Id_Fornecedor) {
+        this.Id_Entrada = Id_Entrada;
+        this.Chave_Acesso = Chave_Acesso;
+        this.Valor_Total = Valor_Total;
+        this.Data_Entrada = Data_Entrada;
+        this.Id_Fornecedor = Id_Fornecedor;
     }
 
-    public int getIdEntrada() {
-        return idEntrada;
+    public Entrada(int Chave_Acesso, float Valor_Total, Date Data_Entrada, int Id_Fornecedor) {
+        this.Chave_Acesso = Chave_Acesso;
+        this.Valor_Total = Valor_Total;
+        this.Data_Entrada = Data_Entrada;
+        this.Id_Fornecedor = Id_Fornecedor;
     }
 
-    public void setIdEntrada(int idEntrada) {
-        this.idEntrada = idEntrada;
+    public int getId_Entrada() {
+        return Id_Entrada;
     }
 
-    public int getChaveAcesso() {
-        return chaveAcesso;
+    public void setId_Entrada(int id_Entrada) {
+        this.Id_Entrada = id_Entrada;
     }
 
-    public void setChaveAcesso(int chaveAcesso) {
-        this.chaveAcesso = chaveAcesso;
+    public int getChave_Acesso() {
+        return Chave_Acesso;
     }
 
-    public float getValorTotal() {
-        return valorTotal;
+    public void setChave_Acesso(int chave_Acesso) {
+        this.Chave_Acesso = chave_Acesso;
     }
 
-    public void setValorTotal(float valorTotal) {
-        this.valorTotal = valorTotal;
+    public float getValor_Total() {
+        return Valor_Total;
     }
 
-    public Date getData() {
-        return data;
+    public void setValor_Total(float valor_Total) {
+        this.Valor_Total = valor_Total;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public Date getData_Entrada() {
+        return Data_Entrada;
     }
 
-    public int getCnpj() {
-        return cnpj;
+    public void setData_Entrada(Date data_Entrada) {
+        this.Data_Entrada = data_Entrada;
     }
 
-    public void setCnpj(int cnpj) {
-        this.cnpj = cnpj;
+    public int getId_Fornecedor() {
+        return Id_Fornecedor;
+    }
+
+    public void setId_Fornecedor(int id_Fornecedor) {
+        this.Id_Fornecedor = id_Fornecedor;
     }
 }

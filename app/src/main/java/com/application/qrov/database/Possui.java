@@ -2,27 +2,30 @@ package com.application.qrov.database;
 
 public class Possui {
 
-    private int idEntrada;
-    private int idMPEntrada;
+    private int Id_Entrada;
+    private int Id_MpEntrada;
 
-    public Possui(int idEntrada, int idMPEntrada) {
-        this.idEntrada = idEntrada;
-        this.idMPEntrada = idMPEntrada;
+    public Possui() {
     }
 
-    public int getIdEntrada() {
-        return idEntrada;
+    public Possui(int Id_Entrada, int Id_MpEntrada) {
+        this.Id_Entrada = Id_Entrada;
+        this.Id_MpEntrada = Id_MpEntrada;
     }
 
-    public void setIdEntrada(int idEntrada) {
-        this.idEntrada = idEntrada;
+    public int getId_Entrada() {
+        return Id_Entrada;
     }
 
-    public int getIdMPEntrada() {
-        return idMPEntrada;
+    public void setId_Entrada(int id_Entrada) {
+        this.Id_Entrada = id_Entrada;
     }
 
-    public void setIdMPEntrada(int idMPEntrada) {
-        this.idMPEntrada = idMPEntrada;
+    public int getId_MpEntrada() {
+        return Id_MpEntrada;
+    }
+
+    public void setId_MpEntrada(int id_MpEntrada) {
+        this.Id_MpEntrada = id_MpEntrada;
     }
 }

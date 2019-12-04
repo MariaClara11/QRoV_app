@@ -2,141 +2,144 @@ package com.application.qrov.database;
 
 public class Fornecedor {
 
-    private int cnpj;
-    private String nome;
-    private String email;
-    private int ie;
-    private int telefone1;
-    private int telefone2;
-    private int cep;
-    private String uf;
-    private String bairro;
-    private String cidade;
-    private String rua;
-    private int num;
+    private int CNPJ;
+    private String Nome;
+    private String Email;
+    private int IE;
+    private int Telefone1;
+    private int Telefone2;
+    private int CEP;
+    private String UF;
+    private String Bairro;
+    private String Cidade;
+    private String Rua;
+    private int Num;
 
-    public Fornecedor(int cnpj, String nome, String email, int ie, int telefone1, int telefone2, int cep, String uf, String bairro, String cidade, String rua, int num) {
-        this.cnpj = cnpj;
-        this.nome = nome;
-        this.email = email;
-        this.ie = ie;
-        this.telefone1 = telefone1;
-        this.telefone2 = telefone2;
-        this.cep = cep;
-        this.uf = uf;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.rua = rua;
-        this.num = num;
+    public Fornecedor() {
     }
 
-    public Fornecedor(String nome, String email, int ie, int telefone1, int telefone2, int cep, String uf, String bairro, String cidade, String rua, int num) {
-        this.nome = nome;
-        this.email = email;
-        this.ie = ie;
-        this.telefone1 = telefone1;
-        this.telefone2 = telefone2;
-        this.cep = cep;
-        this.uf = uf;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.rua = rua;
-        this.num = num;
+    public Fornecedor(int CNPJ, String nome, String email, int IE, int telefone1, int telefone2, int CEP, String UF, String bairro, String cidade, String rua, int num) {
+        this.CNPJ = CNPJ;
+        this.Nome = nome;
+        this.Email = email;
+        this.IE = IE;
+        this.Telefone1 = telefone1;
+        this.Telefone2 = telefone2;
+        this.CEP = CEP;
+        this.UF = UF;
+        this.Bairro = bairro;
+        this.Cidade = cidade;
+        this.Rua = rua;
+        this.Num = num;
     }
 
-    public int getCnpj() {
-        return cnpj;
+    public Fornecedor(String nome, String email, int IE, int telefone1, int telefone2, int CEP, String UF, String bairro, String cidade, String rua, int num) {
+        this.Nome = nome;
+        this.Email = email;
+        this.IE = IE;
+        this.Telefone1 = telefone1;
+        this.Telefone2 = telefone2;
+        this.CEP = CEP;
+        this.UF = UF;
+        this.Bairro = bairro;
+        this.Cidade = cidade;
+        this.Rua = rua;
+        this.Num = num;
     }
 
-    public void setCnpj(int cnpj) {
-        this.cnpj = cnpj;
+    public int getCNPJ() {
+        return CNPJ;
+    }
+
+    public void setCNPJ(int CNPJ) {
+        this.CNPJ = CNPJ;
     }
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.Nome = nome;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.Email = email;
     }
 
-    public int getIe() {
-        return ie;
+    public int getIE() {
+        return IE;
     }
 
-    public void setIe(int ie) {
-        this.ie = ie;
+    public void setIE(int IE) {
+        this.IE = IE;
     }
 
     public int getTelefone1() {
-        return telefone1;
+        return Telefone1;
     }
 
     public void setTelefone1(int telefone1) {
-        this.telefone1 = telefone1;
+        this.Telefone1 = telefone1;
     }
 
     public int getTelefone2() {
-        return telefone2;
+        return Telefone2;
     }
 
     public void setTelefone2(int telefone2) {
-        this.telefone2 = telefone2;
+        this.Telefone2 = telefone2;
     }
 
-    public int getCep() {
-        return cep;
+    public int getCEP() {
+        return CEP;
     }
 
-    public void setCep(int cep) {
-        this.cep = cep;
+    public void setCEP(int CEP) {
+        this.CEP = CEP;
     }
 
-    public String getUf() {
-        return uf;
+    public String getUF() {
+        return UF;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf;
+    public void setUF(String UF) {
+        this.UF = UF;
     }
 
     public String getBairro() {
-        return bairro;
+        return Bairro;
     }
 
     public void setBairro(String bairro) {
-        this.bairro = bairro;
+        this.Bairro = bairro;
     }
 
     public String getCidade() {
-        return cidade;
+        return Cidade;
     }
 
     public void setCidade(String cidade) {
-        this.cidade = cidade;
+        this.Cidade = cidade;
     }
 
     public String getRua() {
-        return rua;
+        return Rua;
     }
 
     public void setRua(String rua) {
-        this.rua = rua;
+        this.Rua = rua;
     }
 
     public int getNum() {
-        return num;
+        return Num;
     }
 
     public void setNum(int num) {
-        this.num = num;
+        this.Num = num;
     }
 }

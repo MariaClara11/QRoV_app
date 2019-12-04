@@ -2,53 +2,56 @@ package com.application.qrov.database;
 
 public class Imagem {
 
-    private String endereco;
-    private String nome;
-    private int idProduto;
-    private int idInsumo;
+    private String Endereco;
+    private String Nome;
+    private int CodProduto;
+    private int Id_Insumo;
 
-    public Imagem(String endereco, String nome, int idProduto, int idInsumo) {
-        this.endereco = endereco;
-        this.nome = nome;
-        this.idProduto = idProduto;
-        this.idInsumo = idInsumo;
+    public Imagem() {
     }
 
-    public Imagem(String nome, int idProduto, int idInsumo) {
-        this.nome = nome;
-        this.idProduto = idProduto;
-        this.idInsumo = idInsumo;
+    public Imagem(String endereco, String nome, int CodProduto, int Id_Insumo) {
+        this.Endereco = endereco;
+        this.Nome = nome;
+        this.CodProduto = CodProduto;
+        this.Id_Insumo = Id_Insumo;
+    }
+
+    public Imagem(String nome, int CodProduto, int Id_Insumo) {
+        this.Nome = nome;
+        this.CodProduto = CodProduto;
+        this.Id_Insumo = Id_Insumo;
     }
 
     public String getEndereco() {
-        return endereco;
+        return Endereco;
     }
 
     public void setEndereco(String endereco) {
-        this.endereco = endereco;
+        this.Endereco = endereco;
     }
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.Nome = nome;
     }
 
-    public int getIdProduto() {
-        return idProduto;
+    public int getCodProduto() {
+        return CodProduto;
     }
 
-    public void setIdProduto(int idProduto) {
-        this.idProduto = idProduto;
+    public void setCodProduto(int codProduto) {
+        this.CodProduto = codProduto;
     }
 
-    public int getIdInsumo() {
-        return idInsumo;
+    public int getId_Insumo() {
+        return Id_Insumo;
     }
 
-    public void setIdInsumo(int idInsumo) {
-        this.idInsumo = idInsumo;
+    public void setId_Insumo(int id_Insumo) {
+        this.Id_Insumo = id_Insumo;
     }
 }

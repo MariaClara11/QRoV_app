@@ -27,7 +27,7 @@ public class ListaOpcoesAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Opcao getItem(int position) {
         return opcoes.get(position);
     }
 
@@ -38,15 +38,15 @@ public class ListaOpcoesAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = activity.getLayoutInflater().inflate(R.layout.item_lista_opcoes, parent, false);
-        Opcao opcao = opcoes.get(position);
+        convertView = activity.getLayoutInflater().inflate(R.layout.item_lista_opcoes, parent, false);
+        Opcao opcao = getItem(position);
 
-        TextView nome = view.findViewById(R.id.opcao);
-        ImageView icone = view.findViewById(R.id.icone);
+        TextView nome = convertView.findViewById(R.id.opcao);
+        ImageView icone = convertView.findViewById(R.id.icone);
 
         nome.setText(opcao.getOpcao());
         icone.setImageResource(opcao.getIconId());
 
-        return view;
+        return convertView;
     }
 }

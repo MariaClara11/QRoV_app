@@ -2,27 +2,30 @@ package com.application.qrov.database;
 
 public class Retem {
 
-    private int idFornecedor;
-    private int idSaida;
+    private int Id_Fornecedor;
+    private int Id_Saida;
 
-    public Retem(int idFornecedor, int idSaida) {
-        this.idFornecedor = idFornecedor;
-        this.idSaida = idSaida;
+    public Retem() {
     }
 
-    public int getIdFornecedor() {
-        return idFornecedor;
+    public Retem(int Id_Fornecedor, int Id_Saida) {
+        this.Id_Fornecedor = Id_Fornecedor;
+        this.Id_Saida = Id_Saida;
     }
 
-    public void setIdFornecedor(int idFornecedor) {
-        this.idFornecedor = idFornecedor;
+    public int getId_Fornecedor() {
+        return Id_Fornecedor;
     }
 
-    public int getIdSaida() {
-        return idSaida;
+    public void setId_Fornecedor(int id_Fornecedor) {
+        this.Id_Fornecedor = id_Fornecedor;
     }
 
-    public void setIdSaida(int idSaida) {
-        this.idSaida = idSaida;
+    public int getId_Saida() {
+        return Id_Saida;
+    }
+
+    public void setId_Saida(int id_Saida) {
+        this.Id_Saida = id_Saida;
     }
 }

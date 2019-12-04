@@ -27,7 +27,6 @@ public class CadastroFragment extends Fragment {
 
     RadioGroup item;
     RadioButton insumo, materiaPrima;
-    Button prox;
 
     public CadastroFragment() {
         // Required empty public constructor
@@ -48,7 +47,6 @@ public class CadastroFragment extends Fragment {
         item = view.findViewById(R.id.RadioGroupItem);
         insumo = view.findViewById(R.id.RadioInsumo);
         materiaPrima = view.findViewById(R.id.RadioMateriaPrima);
-        prox = view.findViewById(R.id.prox);
 
         item.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -59,7 +57,7 @@ public class CadastroFragment extends Fragment {
                         break;
 
                     case R.id.RadioMateriaPrima:
-                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frameCadastro, new CadastroInsumoFragment()).commit();
+                        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.frameCadastro, new CadastroMateriaPrimaFragment()).commit();
                         break;
                 }
             }

@@ -4,75 +4,78 @@ import java.sql.Date;
 
 public class Saida {
 
-    private int idSaida;
-    private float preco;
-    private float qtdSI;
-    private Date data;
-    private float total;
-    private int idProduto;
+    private int Id_Saida;
+    private float Preco;
+    private float Quantidade;
+    private Date Data_Saida;
+    private float Valor_Total;
+    private int CodProduto;
 
-    public Saida(int idSaida, float preco, float qtdSI, Date data, float total, int idProduto) {
-        this.idSaida = idSaida;
-        this.preco = preco;
-        this.qtdSI = qtdSI;
-        this.data = data;
-        this.total = total;
-        this.idProduto = idProduto;
+    public Saida() {
     }
 
-    public Saida(float preco, float qtdSI, Date data, float total, int idProduto) {
-        this.preco = preco;
-        this.qtdSI = qtdSI;
-        this.data = data;
-        this.total = total;
-        this.idProduto = idProduto;
+    public Saida(int Id_Saida, float preco, float Quantidade, Date Data_Saida, float Valor_Total, int CodProduto) {
+        this.Id_Saida = Id_Saida;
+        this.Preco = preco;
+        this.Quantidade = Quantidade;
+        this.Data_Saida = Data_Saida;
+        this.Valor_Total = Valor_Total;
+        this.CodProduto = CodProduto;
     }
 
-    public int getIdSaida() {
-        return idSaida;
+    public Saida(float preco, float Quantidade, Date Data_Saida, float Valor_Total, int CodProduto) {
+        this.Preco = preco;
+        this.Quantidade = Quantidade;
+        this.Data_Saida = Data_Saida;
+        this.Valor_Total = Valor_Total;
+        this.CodProduto = CodProduto;
     }
 
-    public void setIdSaida(int idSaida) {
-        this.idSaida = idSaida;
+    public int getId_Saida() {
+        return Id_Saida;
+    }
+
+    public void setId_Saida(int id_Saida) {
+        this.Id_Saida = id_Saida;
     }
 
     public float getPreco() {
-        return preco;
+        return Preco;
     }
 
     public void setPreco(float preco) {
-        this.preco = preco;
+        this.Preco = preco;
     }
 
-    public float getQtdSI() {
-        return qtdSI;
+    public float getQuantidade() {
+        return Quantidade;
     }
 
-    public void setQtdSI(float qtdSI) {
-        this.qtdSI = qtdSI;
+    public void setQuantidade(float quantidade) {
+        this.Quantidade = quantidade;
     }
 
-    public Date getData() {
-        return data;
+    public Date getData_Saida() {
+        return Data_Saida;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setData_Saida(Date data_Saida) {
+        this.Data_Saida = data_Saida;
     }
 
-    public float getTotal() {
-        return total;
+    public float getValor_Total() {
+        return Valor_Total;
     }
 
-    public void setTotal(float total) {
-        this.total = total;
+    public void setValor_Total(float valor_Total) {
+        this.Valor_Total = valor_Total;
     }
 
-    public int getIdProduto() {
-        return idProduto;
+    public int getCodProduto() {
+        return CodProduto;
     }
 
-    public void setIdProduto(int idProduto) {
-        this.idProduto = idProduto;
+    public void setCodProduto(int codProduto) {
+        this.CodProduto = codProduto;
     }
 }

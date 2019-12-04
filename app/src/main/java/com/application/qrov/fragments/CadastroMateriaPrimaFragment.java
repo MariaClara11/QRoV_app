@@ -11,11 +11,18 @@ import android.view.ViewGroup;
 
 import com.application.qrov.R;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CadastroMateriaPrimaFragment extends Fragment {
 
+    private Map<Integer, String> insumos = new HashMap<>();
+    private Map<Integer, String> localizacoes = new HashMap<>();
+
+    private final String tipo = "Matéria-prima";
 
     public CadastroMateriaPrimaFragment() {
         // Required empty public constructor

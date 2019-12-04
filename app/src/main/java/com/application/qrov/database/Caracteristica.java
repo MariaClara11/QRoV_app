@@ -2,42 +2,45 @@ package com.application.qrov.database;
 
 public class Caracteristica {
 
-    private int idCaracteristica;
-    private String nome;
-    private String descricao;
+    private int Id_Caracteristica;
+    private String Nome;
+    private String Descricao;
 
-    public Caracteristica(int idCaracteristica, String nome, String descricao) {
-        this.idCaracteristica = idCaracteristica;
-        this.nome = nome;
-        this.descricao = descricao;
+    public Caracteristica() {
+    }
+
+    public Caracteristica(int id_Caracteristica, String nome, String descricao) {
+        Id_Caracteristica = id_Caracteristica;
+        Nome = nome;
+        Descricao = descricao;
     }
 
     public Caracteristica(String nome, String descricao) {
-        this.nome = nome;
-        this.descricao = descricao;
+        Nome = nome;
+        Descricao = descricao;
     }
 
-    public int getIdCaracteristica() {
-        return idCaracteristica;
+    public int getId_Caracteristica() {
+        return Id_Caracteristica;
     }
 
-    public void setIdCaracteristica(int idCaracteristica) {
-        this.idCaracteristica = idCaracteristica;
+    public void setId_Caracteristica(int id_Caracteristica) {
+        Id_Caracteristica = id_Caracteristica;
     }
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        Nome = nome;
     }
 
     public String getDescricao() {
-        return descricao;
+        return Descricao;
     }
 
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        Descricao = descricao;
     }
 }
