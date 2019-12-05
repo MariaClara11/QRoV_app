@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.application.qrov.R;
 import com.application.qrov.database.Unidade;
@@ -39,10 +40,20 @@ public class ListaUnidadesAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = activity.getLayoutInflater().inflate(R.layout.item_lista_selecao_unidade, parent, false);
-        Unidade unidade = getItem(position);
+        final Unidade unidade = getItem(position);
 
         CheckBox checkBox = convertView.findViewById(R.id.checkBox);
-        checkBox.setText(unidade.getNome() + "\n" + unidade.getSigla());
+        checkBox.setText(unidade.toString());
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    unidade.setSelecionada(true);
+                } else {
+                    unidade.setSelecionada(false);
+                }
+            }
+        });
 
         return convertView;
     }

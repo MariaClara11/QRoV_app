@@ -76,4 +76,9 @@ public class Localizacao {
     public void setDisponivel(int disponivel) {
         Disponivel = disponivel;
     }
+
+    @Override
+    public String toString() {
+        return "A-" + Andar + "C-" + Corredor + "P-" + Prateleira + "N-" + Nivel;
+    }
 }

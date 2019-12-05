@@ -7,6 +7,7 @@ public class Unidade {
     private String Tipo;
     private float Equivalencia_SI;
     private String Sigla;
+    private boolean selecionada;
 
     public Unidade() {
     }
@@ -64,5 +65,18 @@ public class Unidade {
 
     public void setSigla(String sigla) {
         Sigla = sigla;
+    }
+
+    public boolean isSelecionada() {
+        return selecionada;
+    }
+
+    public void setSelecionada(boolean selecionada) {
+        this.selecionada = selecionada;
+    }
+
+    @Override
+    public String toString() {
+        return Nome + "\n (" + Sigla + ")";
     }
 }

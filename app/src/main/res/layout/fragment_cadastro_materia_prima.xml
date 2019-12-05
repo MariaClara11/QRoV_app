@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputNomeMateriaPrimaLayout" />
 
     <Spinner
-        android:id="@+id/spinnerInsumo"
+        android:id="@+id/spinnerInsumos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
@@ -71,14 +71,14 @@
         android:text="Localização: "
         android:textColor="@color/md_black_1000"
         app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerInsumo" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerInsumos" />
 
     <Spinner
-        android:id="@+id/spinnerLocalizacao"
+        android:id="@+id/spinnerLocalizacoes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerInsumo"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerInsumos"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toTopOf="@+id/textView9" />
 

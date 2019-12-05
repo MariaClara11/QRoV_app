@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inputNomeInsumoLayout" />
 
     <Spinner
-        android:id="@+id/spinnerTipoInsumo"
+        android:id="@+id/spinnerTipoInsumos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -76,8 +76,8 @@
         android:layout_height="wrap_content"
         android:text="Novo tipo"
         android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerTipoInsumo"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerTipoInsumo" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerTipoInsumos"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTipoInsumos" />
 
     <TextView
         android:id="@+id/textView5"
@@ -90,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/novoTipo" />
 
     <Spinner
-        android:id="@+id/spinnerLocalizacao"
+        android:id="@+id/spinnerLocalizacoes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
