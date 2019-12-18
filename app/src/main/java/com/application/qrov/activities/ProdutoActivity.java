@@ -29,7 +29,7 @@ public class ProdutoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_produto);
 
         nomeProduto = findViewById(R.id.nomeProduto);
-        idProduto = findViewById(R.id.idProduto);
+        idProduto = findViewById(R.id.codProduto);
         infoProduto = findViewById(R.id.infoProduto);
         imgProduto = findViewById(R.id.imgProduto);
         qrProduto = findViewById(R.id.qrProduto);

@@ -25,7 +25,7 @@ public class EstoqueActivity extends AppCompatActivity {
     RadioGroup operacao;
     RadioButton entrada, saida;
     ImageView menos, mais;
-    EditText qtd;
+    EditText quantidade;
     LinearLayout layout;
     Button done;
 
@@ -41,7 +41,7 @@ public class EstoqueActivity extends AppCompatActivity {
         saida = findViewById(R.id.radioButtonSaida);
         menos = findViewById(R.id.menos);
         mais = findViewById(R.id.mais);
-        qtd = findViewById(R.id.qtd);
+        quantidade = findViewById(R.id.quantidade);
         layout = findViewById(R.id.layout);
         done = findViewById(R.id.done);
 
@@ -56,7 +56,7 @@ public class EstoqueActivity extends AppCompatActivity {
                         done.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                if (!TextUtils.isEmpty(qtd.getText().toString())) {
+                                if (!TextUtils.isEmpty(quantidade.getText().toString())) {
                                     finish();
                                 } else {
                                     new AlertDialog.Builder(EstoqueActivity.this)
@@ -74,7 +74,7 @@ public class EstoqueActivity extends AppCompatActivity {
                         done.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                if (!TextUtils.isEmpty(qtd.getText().toString())) {
+                                if (!TextUtils.isEmpty(quantidade.getText().toString())) {
                                     finish();
                                 } else {
                                     new AlertDialog.Builder(EstoqueActivity.this)
@@ -93,13 +93,13 @@ public class EstoqueActivity extends AppCompatActivity {
         menos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(qtd.getText().toString())) {
-                    qtd.setText("0");
+                if (TextUtils.isEmpty(quantidade.getText().toString())) {
+                    quantidade.setText("0");
                 } else {
-                    int n = Integer.parseInt(qtd.getText().toString());
+                    int n = Integer.parseInt(quantidade.getText().toString());
                     if (n > 0) {
                         n--;
-                        qtd.setText(Integer.toString(n));
+                        quantidade.setText(Integer.toString(n));
                     }
                 }
             }
@@ -108,12 +108,12 @@ public class EstoqueActivity extends AppCompatActivity {
         mais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(qtd.getText().toString())) {
-                    qtd.setText("0");
+                if (TextUtils.isEmpty(quantidade.getText().toString())) {
+                    quantidade.setText("0");
                 } else {
-                    int n = Integer.parseInt(qtd.getText().toString());
+                    int n = Integer.parseInt(quantidade.getText().toString());
                     n++;
-                    qtd.setText(Integer.toString(n));
+                    quantidade.setText(Integer.toString(n));
                 }
             }
         });
