@@ -18,7 +18,9 @@ import android.widget.Spinner;
 
 import com.application.qrov.R;
 import com.application.qrov.database.Conexao;
+import com.application.qrov.database.Insumo;
 import com.application.qrov.database.Localizacao;
+import com.application.qrov.database.Materia_Prima;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -70,19 +72,50 @@ public class CadastroMateriaPrimaFragment extends Fragment {
         spinnerLocalizacoes = view.findViewById(R.id.spinnerLocalizacoes);
         proximo = view.findViewById(R.id.proximo);
 
+        listaIdMateriaPrima();
+        listaInsumos();
+        listaLocalizacoesDisponiveis();
+
         proximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (idMaterias.contains(Integer.parseInt(inputId.getText().toString())) || TextUtils.isEmpty(inputId.getText().toString())) {
                     inputIdLayout.setError("Erro de identificador");
                 } else {
+                    Materia_Prima materiaPrima = new Materia_Prima();
+                    materiaPrima.setCodProduto(Integer.parseInt(inputId.getText().toString()));
+                    materiaPrima.setId_Insumo(idInsumos.get(spinnerInsumos.getSelectedItemPosition()));
+                    materiaPrima.setId_Localizacao(idLocalizacoes.get(spinnerLocalizacoes.getSelectedItemPosition()));
+                    materiaPrima.setNome(inputNome.getText().toString());
+                    materiaPrima.setVisivel(1);
                     SelecaoUnidadesFragment selecaoUnidadesFragment = new SelecaoUnidadesFragment();
-                    selecaoUnidadesFragment.setIdProduto(Integer.parseInt(inputId.getText().toString()));
-                    selecaoUnidadesFragment.setTipoProduto(Conexao.MATERIA_PRIMA);
-                    selecaoUnidadesFragment.setIdLocalizacao(idLocalizacoes.get(spinnerLocalizacoes.getSelectedItemPosition()));
-
+                    selecaoUnidadesFragment.setMateriaPrima(materiaPrima);
                     Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, selecaoUnidadesFragment).commit();
                 }
+            }
+        });
+    }
+
+    private void listaInsumos() {
+        String url = Conexao.HOST + "select_all_insumo.php";
+
+        Ion.with(Objects.requireNonNull(getContext())).load(url).asJsonArray().setCallback(new FutureCallback<JsonArray>() {
+            @Override
+            public void onCompleted(Exception e, JsonArray result) {
+                for (int i = 0; i < result.size(); i++) {
+                    JsonObject object = result.get(i).getAsJsonObject();
+
+                    Insumo insumo = new Insumo();
+                    insumo.setId_Insumo(object.get("Id_Insumo").getAsInt());
+                    idInsumos.add(insumo.getId_Insumo());
+                    insumo.setNome(object.get("Nome").getAsString());
+                    insumos.add(insumo.getNome());
+                }
+
+                ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, insumos);
+                stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerInsumos.setAdapter(stringArrayAdapter);
+                stringArrayAdapter.notifyDataSetChanged();
             }
         });
     }
@@ -104,11 +137,12 @@ public class CadastroMateriaPrimaFragment extends Fragment {
                     localizacao.setPrateleira(object.get("Prateleira").getAsInt());
                     localizacao.setNivel(object.get("Nivel").getAsInt());
                     localizacoes.add(localizacao.toString());
-
-                    ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, localizacoes);
-                    stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinnerLocalizacoes.setAdapter(stringArrayAdapter);
                 }
+
+                ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, localizacoes);
+                stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerLocalizacoes.setAdapter(stringArrayAdapter);
+                stringArrayAdapter.notifyDataSetChanged();
             }
         });
     }
