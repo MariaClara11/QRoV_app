@@ -2,45 +2,34 @@ package com.application.qrov.database;
 
 public class Usuario {
 
-    private String idUsuario;
-    private String nome;
-    private String senha;
+    private String Nome_Usuario;
+    private String Senha;
 
     public Usuario() {
     }
 
-    public Usuario(String idUsuario, String nome, String senha) {
-        this.idUsuario = idUsuario;
-        this.nome = nome;
-        this.senha = senha;
+    public Usuario(String nome_Usuario, String senha) {
+        Nome_Usuario = nome_Usuario;
+        Senha = senha;
     }
 
-    public Usuario(String nome, String senha) {
-        this.nome = nome;
-        this.senha = senha;
+    public Usuario(String senha) {
+        Senha = senha;
     }
 
-    public String getIdUsuario() {
-        return idUsuario;
+    public String getNome_Usuario() {
+        return Nome_Usuario;
     }
 
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome_Usuario(String nome_Usuario) {
+        Nome_Usuario = nome_Usuario;
     }
 
     public String getSenha() {
-        return senha;
+        return Senha;
     }
 
     public void setSenha(String senha) {
-        this.senha = senha;
+        Senha = senha;
     }
 }

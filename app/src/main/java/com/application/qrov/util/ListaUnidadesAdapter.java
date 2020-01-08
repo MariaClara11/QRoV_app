@@ -44,14 +44,11 @@ public class ListaUnidadesAdapter extends BaseAdapter {
 
         CheckBox checkBox = convertView.findViewById(R.id.checkBox);
         checkBox.setText(unidade.toString());
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    unidade.setSelecionada(true);
-                } else {
-                    unidade.setSelecionada(false);
-                }
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                unidade.setSelecionada(true);
+            } else {
+                unidade.setSelecionada(false);
             }
         });
 

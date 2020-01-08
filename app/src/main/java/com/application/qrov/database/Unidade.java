@@ -4,7 +4,6 @@ public class Unidade {
 
     private int Id_Unidade;
     private String Nome;
-    private String Tipo;
     private float Equivalencia_SI;
     private String Sigla;
     private boolean selecionada;
@@ -12,17 +11,15 @@ public class Unidade {
     public Unidade() {
     }
 
-    public Unidade(int id_Unidade, String nome, String tipo, float equivalencia_SI, String sigla) {
+    public Unidade(int id_Unidade, String nome, float equivalencia_SI, String sigla) {
         Id_Unidade = id_Unidade;
         Nome = nome;
-        Tipo = tipo;
         Equivalencia_SI = equivalencia_SI;
         Sigla = sigla;
     }
 
-    public Unidade(String nome, String tipo, float equivalencia_SI, String sigla) {
+    public Unidade(String nome, float equivalencia_SI, String sigla) {
         Nome = nome;
-        Tipo = tipo;
         Equivalencia_SI = equivalencia_SI;
         Sigla = sigla;
     }
@@ -41,14 +38,6 @@ public class Unidade {
 
     public void setNome(String nome) {
         Nome = nome;
-    }
-
-    public String getTipo() {
-        return Tipo;
-    }
-
-    public void setTipo(String tipo) {
-        Tipo = tipo;
     }
 
     public float getEquivalencia_SI() {

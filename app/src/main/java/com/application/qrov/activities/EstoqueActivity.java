@@ -32,7 +32,7 @@ public class EstoqueActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_estoque);
+        setContentView(R.layout.dialog_estoque);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Alterar estoque");
 

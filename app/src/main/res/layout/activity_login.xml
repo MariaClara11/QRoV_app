@@ -40,18 +40,8 @@
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/entrar"
-        style="@style/Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Entrar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,10 +60,12 @@
             android:id="@+id/senha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/baseline_lock_24"
             android:hint="Senha"
             android:inputType="textPassword"
             android:singleLine="true"
-            android:textColor="@color/md_white_1000" />
+            android:textColor="@color/md_black_1000" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -96,9 +88,29 @@
             android:id="@+id/usuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/baseline_person_24"
             android:hint="Usuário"
             android:singleLine="true"
-            android:textColor="@color/md_white_1000" />
+            android:textColor="@color/md_black_1000" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/entrar"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrar"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <TextView
+        android:id="@+id/help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preciso de ajuda"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

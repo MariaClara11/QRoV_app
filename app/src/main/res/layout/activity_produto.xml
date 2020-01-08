@@ -32,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nomeProduto" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
@@ -136,10 +137,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:enabled="false"
+        android:enabled="true"
         android:text="Alterar quantidade em estoque"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:tint="@color/md_white_1000"
+        app:layout_constraintBottom_toTopOf="@+id/cardView3"
+        app:layout_constraintStart_toStartOf="@+id/cardView3"
+        app:srcCompat="@drawable/outline_edit_24" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:tint="@color/md_white_1000"
+        app:layout_constraintBottom_toBottomOf="@+id/update"
+        app:layout_constraintStart_toEndOf="@+id/update"
+        app:srcCompat="@drawable/outline_delete_forever_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

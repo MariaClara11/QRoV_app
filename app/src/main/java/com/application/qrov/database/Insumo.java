@@ -5,24 +5,21 @@ public class Insumo {
     private int Id_Insumo;
     private String Nome;
     private int Id_Tipo;
-    private int Id_Localizacao;
     private int Visivel;
 
     public Insumo() {
     }
 
-    public Insumo(int Id_Insumo, String nome, int Id_Tipo, int Id_Localizacao, int Visivel) {
+    public Insumo(int Id_Insumo, String nome, int Id_Tipo, int Visivel) {
         this.Id_Insumo = Id_Insumo;
         this.Nome = nome;
         this.Id_Tipo = Id_Tipo;
-        this.Id_Localizacao = Id_Localizacao;
         this.Visivel = Visivel;
     }
 
-    public Insumo(String nome, int Id_Tipo, int Id_Localizacao, int Visivel) {
+    public Insumo(String nome, int Id_Tipo, int Visivel) {
         this.Nome = nome;
         this.Id_Tipo = Id_Tipo;
-        this.Id_Localizacao = Id_Localizacao;
         this.Visivel = Visivel;
     }
 
@@ -50,14 +47,6 @@ public class Insumo {
         this.Id_Tipo = id_Tipo;
     }
 
-    public int getId_Localizacao() {
-        return Id_Localizacao;
-    }
-
-    public void setId_Localizacao(int id_Localizacao) {
-        this.Id_Localizacao = id_Localizacao;
-    }
-
     public int getVisivel() {
         return Visivel;
     }
@@ -66,8 +55,4 @@ public class Insumo {
         this.Visivel = visivel;
     }
 
-    @Override
-    public String toString() {
-        return "Insumo: " + Id_Insumo;
-    }
 }

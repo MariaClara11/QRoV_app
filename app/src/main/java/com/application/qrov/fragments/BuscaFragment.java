@@ -14,8 +14,17 @@ import com.application.qrov.R;
 import com.application.qrov.activities.Captura;
 import com.application.qrov.activities.ListaProdutosActivity;
 import com.application.qrov.activities.ProdutoActivity;
+import com.application.qrov.database.Conexao;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +41,9 @@ public class BuscaFragment extends Fragment {
     private TextView resultado;
     private Button verProduto;
     private CardView card;
+
+    private int CodProduto;
+    private ArrayList<Integer> idMaterias = new ArrayList<>();
 
     public BuscaFragment() {
         // Required empty public constructor
@@ -55,32 +67,23 @@ public class BuscaFragment extends Fragment {
         verProduto = view.findViewById(R.id.verProduto);
         card = view.findViewById(R.id.card);
 
-        abrirCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IntentIntegrator.forSupportFragment(BuscaFragment.this)
-                        .setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES)
-                        .setPrompt("Alinhe uma etiqueta QR-Code com o laser")
-                        .setCameraId(0)
-                        .setBarcodeImageEnabled(false)
-                        .setCaptureActivity(Captura.class)
-                        .initiateScan();
-            }
+        listaIdMateriaPrima();
+
+        abrirCamera.setOnClickListener(v -> IntentIntegrator.forSupportFragment(BuscaFragment.this)
+                .setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES)
+                .setPrompt("Alinhe uma etiqueta QR Code com o laser")
+                .setCameraId(0)
+                .setBarcodeImageEnabled(false)
+                .setCaptureActivity(Captura.class)
+                .initiateScan());
+
+        verProduto.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), ProdutoActivity.class);
+            intent.putExtra("CodProduto", CodProduto);
+            startActivity(intent);
         });
 
-        verProduto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ProdutoActivity.class));
-            }
-        });
-
-        todos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ListaProdutosActivity.class));
-            }
-        });
+        todos.setOnClickListener(v -> startActivity(new Intent(getActivity(), ListaProdutosActivity.class)));
     }
 
     @Override
@@ -90,13 +93,48 @@ public class BuscaFragment extends Fragment {
             if (result.getContents() == null) {
                 card.setVisibility(View.INVISIBLE);
                 verProduto.setEnabled(false);
-            } else {
+            } else if (idMaterias.contains(Integer.parseInt(result.getContents()))) {
                 card.setVisibility(View.VISIBLE);
-                resultado.setText(result.getContents());
+                CodProduto = Integer.parseInt(result.getContents());
+                resultado.setText(getMateriaPrimaBD(result.getContents()));
                 verProduto.setEnabled(true);
+            } else {
+                Snackbar.make(new View(getContext()), "QR Code não foi validado pelo sistema", Snackbar.LENGTH_LONG).show();
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    private String getMateriaPrimaBD(String CodProduto) {
+        final String[] materiaPrima = {""};
+        String url = Conexao.HOST + "select_all_materia_prima_by_id.php";
+
+        Ion.with(Objects.requireNonNull(getContext())).load(url)
+                .setBodyParameter("CodProduto", CodProduto)
+                .asJsonObject()
+                .setCallback((e, result) -> {
+                    materiaPrima[0] += "Identificador: " + result.get("CodProduto").getAsString() + "\n";
+                    materiaPrima[0] += "Nome: " + result.get("Nome").getAsString() + "\n";
+
+                    Ion.with(getContext()).load(Conexao.HOST + "select_all_insumo_by_id.php")
+                            .setBodyParameter("Id_Insumo", result.get("Id_Insumo").getAsString())
+                            .asJsonObject()
+                            .setCallback((e1, result1) -> materiaPrima[0] += "Insumo: " + result1.get("Nome").getAsString());
+                });
+
+        return materiaPrima[0];
+    }
+
+    private void listaIdMateriaPrima() {
+        String url = Conexao.HOST + "select_id_materia_prima.php";
+
+        Ion.with(Objects.requireNonNull(getContext())).load(url).asJsonArray().setCallback((e, result) -> {
+            for (int i = 0; i < result.size(); i++) {
+                JsonObject object = result.get(i).getAsJsonObject();
+                int id = object.get("CodProduto").getAsInt();
+                idMaterias.add(id);
+            }
+        });
     }
 }

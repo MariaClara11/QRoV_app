@@ -5,7 +5,7 @@ import android.view.MenuItem;
 
 import com.application.qrov.R;
 import com.application.qrov.fragments.BuscaFragment;
-import com.application.qrov.fragments.CadastroFragment;
+import com.application.qrov.fragments.CadastroMateriaPrimaFragment;
 import com.application.qrov.fragments.MaisFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.itemCadastro:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new CadastroFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new CadastroMateriaPrimaFragment()).commit();
                 return true;
 
             case R.id.itemMais:

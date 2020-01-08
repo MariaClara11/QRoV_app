@@ -2,42 +2,38 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/linearLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/itemNomeProduto"
+        android:id="@+id/nomeCaracteristica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Nome"
         android:textColor="@color/md_black_1000"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemIdProduto" />
-
-    <TextView
-        android:id="@+id/itemIdProduto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="ID"
-        android:textColor="@color/md_black_1000"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/itemNomeProduto"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemNomeProduto" />
+    <TextView
+        android:id="@+id/descCaracteristica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descrição"
+        android:textColor="@color/md_black_1000"
+        app:layout_constraintStart_toStartOf="@+id/nomeCaracteristica"
+        app:layout_constraintTop_toBottomOf="@+id/nomeCaracteristica" />
 
+    <CheckBox
+        android:id="@+id/temCaracteristica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/descCaracteristica"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nomeCaracteristica" />
 </androidx.constraintlayout.widget.ConstraintLayout>

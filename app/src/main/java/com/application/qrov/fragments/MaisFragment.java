@@ -77,7 +77,9 @@ public class MaisFragment extends Fragment {
                     case 1:
                         new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
                                 .setTitle("Contato")
-                                .setMessage("Entre em contato com os desenvolvedores através do e-mail\ndevelop@qrov.com.")
+                                .setMessage("Entre em contato com a equipe de desenvolvedores\n" +
+                                        "E-mail: \n" +
+                                        "Telefone: \n")
                                 .setPositiveButton("OK", null)
                                 .show();
                         break;

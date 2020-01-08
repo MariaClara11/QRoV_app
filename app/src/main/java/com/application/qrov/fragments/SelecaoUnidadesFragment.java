@@ -1,6 +1,7 @@
 package com.application.qrov.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.application.qrov.R;
+import com.application.qrov.activities.ProdutoActivity;
 import com.application.qrov.database.Conexao;
 import com.application.qrov.database.Insumo;
 import com.application.qrov.database.Materia_Prima;
@@ -35,21 +37,7 @@ public class SelecaoUnidadesFragment extends Fragment {
 
     private ListView entrada, saida;
     private Button voltar, finalizar;
-
-    private Insumo insumo;
     private Materia_Prima materiaPrima;
-
-    public Insumo getInsumo() {
-        return insumo;
-    }
-
-    public void setInsumo(Insumo insumo) {
-        this.insumo = insumo;
-    }
-
-    public Materia_Prima getMateriaPrima() {
-        return materiaPrima;
-    }
 
     public void setMateriaPrima(Materia_Prima materiaPrima) {
         this.materiaPrima = materiaPrima;
@@ -86,152 +74,54 @@ public class SelecaoUnidadesFragment extends Fragment {
         entrada.setAdapter(listaUnidadesAdapter);
         saida.setAdapter(listaUnidadesAdapter);
 
-        voltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (insumo != null) {
-                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new CadastroInsumoFragment()).commit();
-                } else if (materiaPrima != null) {
-                    Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new CadastroMateriaPrimaFragment()).commit();
+        voltar.setOnClickListener(v -> Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new CadastroMateriaPrimaFragment()).commit());
+
+        finalizar.setOnClickListener(v -> {
+            selecaoUnidadeEntrada();
+            selecaoUnidadeSaida();
+
+            if (idUnidadeEntrada.isEmpty() || idUnidadeSaida.isEmpty()) {
+                Snackbar.make(new View(getActivity()), "Selecione pelo menos uma unidade em cada coluna", Snackbar.LENGTH_LONG).show();
+            } else {
+                Ion.with(Objects.requireNonNull(getContext()))
+                        .load(Conexao.HOST + "insert_materia_prima.php")
+                        .setBodyParameter("CodProduto", String.valueOf(materiaPrima.getCodProduto()))
+                        .setBodyParameter("Nome", materiaPrima.getNome())
+                        .setBodyParameter("Id_Insumo", String.valueOf(materiaPrima.getId_Insumo()))
+                        .setBodyParameter("Visivel", String.valueOf(materiaPrima.getVisivel()))
+                        .asJsonObject()
+                        .setCallback((e, result) -> {
+                            if (result.get("EXECUCAO").getAsString().equals("OK")) {
+                                Snackbar.make(new View(getContext()), "Cadastro realizado", Snackbar.LENGTH_LONG).show();
+
+                            } else {
+                                Snackbar.make(new View(getContext()), "Cadastro não realizado", Snackbar.LENGTH_LONG).show();
+                            }
+                        });
+
+                for (int idUnidade : idUnidadeEntrada) {
+                    Ion.with(Objects.requireNonNull(getContext()))
+                            .load(Conexao.HOST + "insert_materia_prima_tem_unidade_entrada.php")
+                            .setBodyParameter("Id_Unidade", String.valueOf(idUnidade))
+                            .setBodyParameter("CodProduto", String.valueOf(materiaPrima.getCodProduto()))
+                            .asJsonObject()
+                            .setCallback((e, result) -> {
+                            });
                 }
-            }
-        });
 
-        finalizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selecaoUnidadeEntrada();
-                selecaoUnidadeSaida();
-
-                if (idUnidadeEntrada.isEmpty() || idUnidadeSaida.isEmpty()) {
-                    Snackbar.make(new View(getActivity()), "Selecione pelo menos uma unidade em cada coluna", Snackbar.LENGTH_LONG).show();
-                } else {
-                    if (insumo != null) {
-                        String url1 = Conexao.HOST + "update_localizacao";
-
-                        Ion.with(getContext()).load(url1)
-                                .setBodyParameter("Id_Localizacao", String.valueOf(insumo.getId_Localizacao()))
-                                .asJsonObject()
-                                .setCallback(new FutureCallback<JsonObject>() {
-                                    @Override
-                                    public void onCompleted(Exception e, JsonObject result) {
-
-                                    }
-                                });
-
-                        String url2 = Conexao.HOST + "insert_insumo.php";
-
-                        Ion.with(getContext()).load(url2)
-                                .setBodyParameter("Id_Insumo", String.valueOf(insumo.getId_Insumo()))
-                                .setBodyParameter("Nome", insumo.getNome())
-                                .setBodyParameter("Id_Tipo", String.valueOf(insumo.getId_Tipo()))
-                                .setBodyParameter("Id_Localizacao", String.valueOf(insumo.getId_Localizacao()))
-                                .setBodyParameter("Visivel", String.valueOf(insumo.getVisivel()))
-                                .asJsonObject()
-                                .setCallback(new FutureCallback<JsonObject>() {
-                                    @Override
-                                    public void onCompleted(Exception e, JsonObject result) {
-                                        if (result.get("EXECUCAO").getAsString().equals("OK")) {
-                                            Snackbar.make(new View(getContext()), "Cadastro realizado", Snackbar.LENGTH_LONG).show();
-                                        } else {
-                                            Snackbar.make(new View(getContext()), "Cadastro não realizado", Snackbar.LENGTH_LONG).show();
-                                        }
-                                    }
-                                });
-
-                        String url3 = Conexao.HOST + "insert_insumo_tem_unidade_entrada";
-
-                        for (int idUnidade : idUnidadeEntrada) {
-                            Ion.with(getContext()).load(url3)
-                                    .setBodyParameter("Id_Unidade", String.valueOf(idUnidade))
-                                    .setBodyParameter("Id_Insumo", String.valueOf(insumo.getId_Insumo()))
-                                    .asJsonObject()
-                                    .setCallback(new FutureCallback<JsonObject>() {
-                                        @Override
-                                        public void onCompleted(Exception e, JsonObject result) {
-
-                                        }
-                                    });
-                        }
-
-                        String url4 = Conexao.HOST + "insert_insumo_tem_unidade_saida";
-
-                        for (int idUnidade : idUnidadeSaida) {
-                            Ion.with(getContext()).load(url4)
-                                    .setBodyParameter("Id_Unidade", String.valueOf(idUnidade))
-                                    .setBodyParameter("Id_Insumo", String.valueOf(insumo.getId_Insumo()))
-                                    .asJsonObject()
-                                    .setCallback(new FutureCallback<JsonObject>() {
-                                        @Override
-                                        public void onCompleted(Exception e, JsonObject result) {
-
-                                        }
-                                    });
-                        }
-                    } else if (materiaPrima != null) {
-                        String url1 = Conexao.HOST + "update_localizacao";
-
-                        Ion.with(getContext()).load(url1)
-                                .setBodyParameter("Id_Localizacao", String.valueOf(materiaPrima.getId_Localizacao()))
-                                .asJsonObject()
-                                .setCallback(new FutureCallback<JsonObject>() {
-                                    @Override
-                                    public void onCompleted(Exception e, JsonObject result) {
-
-                                    }
-                                });
-
-                        String url2 = Conexao.HOST + "insert_materia_prima.php";
-
-                        Ion.with(getContext()).load(url2)
-                                .setBodyParameter("CodProduto", String.valueOf(materiaPrima.getCodProduto()))
-                                .setBodyParameter("Nome", materiaPrima.getNome())
-                                .setBodyParameter("Id_Insumo", String.valueOf(insumo.getId_Insumo()))
-                                .setBodyParameter("Id_Localizacao", String.valueOf(materiaPrima.getId_Localizacao()))
-                                .setBodyParameter("Visivel", String.valueOf(materiaPrima.getVisivel()))
-                                .asJsonObject()
-                                .setCallback(new FutureCallback<JsonObject>() {
-                                    @Override
-                                    public void onCompleted(Exception e, JsonObject result) {
-                                        if (result.get("EXECUCAO").getAsString().equals("OK")) {
-                                            Snackbar.make(new View(getContext()), "Cadastro realizado", Snackbar.LENGTH_LONG).show();
-                                        } else {
-                                            Snackbar.make(new View(getContext()), "Cadastro não realizado", Snackbar.LENGTH_LONG).show();
-                                        }
-                                    }
-                                });
-
-                        String url3 = Conexao.HOST + "insert_materia_prima_tem_unidade_entrada";
-
-                        for (int idUnidade : idUnidadeEntrada) {
-                            Ion.with(getContext()).load(url3)
-                                    .setBodyParameter("Id_Unidade", String.valueOf(idUnidade))
-                                    .setBodyParameter("CodProduto", String.valueOf(materiaPrima.getCodProduto()))
-                                    .asJsonObject()
-                                    .setCallback(new FutureCallback<JsonObject>() {
-                                        @Override
-                                        public void onCompleted(Exception e, JsonObject result) {
-
-                                        }
-                                    });
-                        }
-
-                        String url4 = Conexao.HOST + "insert_materia_prima_tem_unidade_saida";
-
-                        for (int idUnidade : idUnidadeSaida) {
-                            Ion.with(getContext()).load(url4)
-                                    .setBodyParameter("Id_Unidade", String.valueOf(idUnidade))
-                                    .setBodyParameter("CodProduto", String.valueOf(materiaPrima.getCodProduto()))
-                                    .asJsonObject()
-                                    .setCallback(new FutureCallback<JsonObject>() {
-                                        @Override
-                                        public void onCompleted(Exception e, JsonObject result) {
-
-                                        }
-                                    });
-                        }
-                    }
+                for (int idUnidade : idUnidadeSaida) {
+                    Ion.with(Objects.requireNonNull(getContext()))
+                            .load(Conexao.HOST + "insert_materia_prima_tem_unidade_saida.php")
+                            .setBodyParameter("Id_Unidade", String.valueOf(idUnidade))
+                            .setBodyParameter("CodProduto", String.valueOf(materiaPrima.getCodProduto()))
+                            .asJsonObject()
+                            .setCallback((e, result) -> {
+                            });
                 }
+
+                Intent intent = new Intent(getActivity(), ProdutoActivity.class);
+                intent.putExtra("CodProduto", materiaPrima.getCodProduto());
+                startActivity(intent);
             }
         });
     }
@@ -239,25 +129,24 @@ public class SelecaoUnidadesFragment extends Fragment {
     private void listaUnidades() {
         String url = Conexao.HOST + "select_all_unidade.php";
 
-        Ion.with(Objects.requireNonNull(getContext())).load(url).asJsonArray().setCallback(new FutureCallback<JsonArray>() {
-            @Override
-            public void onCompleted(Exception e, JsonArray result) {
-                for (int i = 0; i < result.size(); i++) {
-                    JsonObject object = result.get(i).getAsJsonObject();
+        Ion.with(Objects.requireNonNull(getContext()))
+                .load(url)
+                .asJsonArray()
+                .setCallback((e, result) -> {
+                    for (int i = 0; i < result.size(); i++) {
+                        JsonObject object = result.get(i).getAsJsonObject();
 
-                    Unidade unidade = new Unidade();
-                    unidade.setId_Unidade(object.get("Id_Unidade").getAsInt());
-                    unidade.setNome(object.get("Nome").getAsString());
-                    unidade.setSigla(object.get("Sigla").getAsString());
-                    unidade.setTipo(object.get("Tipo_Insumo").getAsString());
-                    unidade.setEquivalencia_SI(object.get("Equivalencia_SI").getAsFloat());
+                        Unidade unidade = new Unidade();
+                        unidade.setId_Unidade(object.get("Id_Unidade").getAsInt());
+                        unidade.setNome(object.get("Nome").getAsString());
+                        unidade.setSigla(object.get("Sigla").getAsString());
+                        unidade.setEquivalencia_SI(object.get("Equivalencia_SI").getAsFloat());
 
-                    unidades.add(unidade);
-                }
+                        unidades.add(unidade);
+                    }
 
-                listaUnidadesAdapter = new ListaUnidadesAdapter(getActivity(), unidades);
-            }
-        });
+                    listaUnidadesAdapter = new ListaUnidadesAdapter(getActivity(), unidades);
+                });
     }
 
     private void selecaoUnidadeEntrada() {
