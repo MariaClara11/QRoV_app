@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 if (usuarios.containsKey(usuario.getText().toString())) {
                     if (Objects.equals(usuarios.get(usuario.getText().toString()), senha.getText().toString())) {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, SplashActivity.class));
                     } else {
                         Snackbar.make(new View(LoginActivity.this), "Senha incorreta", Snackbar.LENGTH_LONG).show();
                     }
