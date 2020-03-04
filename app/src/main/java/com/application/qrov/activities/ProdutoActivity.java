@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.application.qrov.R;
 import com.application.qrov.database.Conexao;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -34,6 +35,8 @@ public class ProdutoActivity extends AppCompatActivity {
     ImageView imgProduto, qrProduto, update, delete;
     Button estoque;
     Dialog dialogEntrada, dialogSaida;
+
+    ArrayList<Integer> idMpEntrada = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,6 +145,13 @@ public class ProdutoActivity extends AppCompatActivity {
         input_estoqueMin = view.findViewById(R.id.input_estoqueMin);
         input_preco = view.findViewById(R.id.input_preco);
 
+        listaIdMpEntrada();
+        if (TextUtils.isEmpty(input_idMPEntrada.getText()) || idMpEntrada.contains(Integer.parseInt(input_idMPEntrada.getText().toString()))) {
+            Snackbar.make(new View(ProdutoActivity.this), "Erro no identificador", Snackbar.LENGTH_LONG).show();
+        } else {
+            //TODO Cadastrar MpEntrada e entrada
+        }
+
         ImageView mais, menos;
         EditText quantidade;
         mais = view.findViewById(R.id.mais);
@@ -209,4 +219,13 @@ public class ProdutoActivity extends AppCompatActivity {
 
     }
 
+    private void listaIdMpEntrada() {
+        Ion.with(ProdutoActivity.this).load(Conexao.HOST + "select_id_mp_entrada.php")
+                .asJsonArray()
+                .setCallback((e, result) -> {
+                    for (int i = 0; i < result.size(); i++) {
+                        idMpEntrada.add(result.get(i).getAsJsonObject().get("Id_MpEntrada").getAsInt());
+                    }
+                });
+    }
 }

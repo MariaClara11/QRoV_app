@@ -1,18 +1,18 @@
 package com.application.qrov.database;
 
-public class Tem_Unidade_Entrada {
+public class Tem_Unidade {
 
     private int Id_Unidade;
     private int CodProduto;
-    private int Id_Insumo;
+    private String Tipo;
 
-    public Tem_Unidade_Entrada() {
+    public Tem_Unidade() {
     }
 
-    public Tem_Unidade_Entrada(int Id_Unidade, int CodProduto, int Id_Insumo) {
+    public Tem_Unidade(int Id_Unidade, int CodProduto, String tipo) {
         this.Id_Unidade = Id_Unidade;
         this.CodProduto = CodProduto;
-        this.Id_Insumo = Id_Insumo;
+        this.Tipo = tipo;
     }
 
     public int getId_Unidade() {
@@ -31,11 +31,11 @@ public class Tem_Unidade_Entrada {
         this.CodProduto = codProduto;
     }
 
-    public int getId_Insumo() {
-        return Id_Insumo;
+    public String getTipo() {
+        return Tipo;
     }
 
-    public void setId_Insumo(int id_Insumo) {
-        this.Id_Insumo = id_Insumo;
+    public void setTipo(String tipo) {
+        Tipo = tipo;
     }
 }
